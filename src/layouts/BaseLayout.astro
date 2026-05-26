@@ -3,8 +3,17 @@ export interface Props {
   title: string;
   description?: string;
   ogTitle?: string;
+  ogType?: string;
+  canonicalUrl?: string;
 }
-const { title, description = "AI automation documented from inside real client work. Shown, not sold.", ogTitle } = Astro.props;
+const {
+  title,
+  description = "AI automation documented from inside real client work. Shown, not sold.",
+  ogTitle,
+  ogType = "website",
+  canonicalUrl,
+} = Astro.props;
+const canonical = canonicalUrl ?? Astro.url.href;
 ---
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
@@ -12,10 +21,16 @@ const { title, description = "AI automation documented from inside real client w
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
+  <link rel="canonical" href={canonical} />
   <meta name="description" content={description} />
   <meta property="og:title" content={ogTitle ?? title} />
   <meta property="og:description" content={description} />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:site_name" content="The Operator" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={ogTitle ?? title} />
+  <meta name="twitter:description" content={description} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
