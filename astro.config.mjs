@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://theoperator.ai',
+  site: 'https://automationdiary.com',
   output: 'static',
 });
