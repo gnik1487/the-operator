@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import NewsletterBand from '../components/NewsletterBand.astro';
+import '../styles/global.css';
+---
+<BaseLayout title="The Operator — AI automation, shown not sold">
+  <Nav slot="header" />
+
+  <!-- HERO -->
+  <section class="hero rel">
+    <div class="hero-inner">
+      <div class="kicker">Automation, shown not sold</div>
+      <h1 class="serif" id="heroH1"></h1>
+      <p class="lede">AI workflows documented from inside a working consulting practice and a content business — not tool reviews from someone who opened a free trial yesterday. What survives past the novelty, what I cut, and what a senior professional should actually copy.</p>
+      <div class="cta-row">
+        <a href="/blog/research-workflow-replaced-my-analyst" class="btn btn-primary">Read the latest build →</a>
+        <a href="/workflows" class="btn btn-ghost">Browse the workflows</a>
+      </div>
+      <div class="metrics reveal">
+        <div class="metric">
+          <div class="n">40<span style="font-size:20px">min</span></div>
+          <div class="l">client research,<br />down from half a day</div>
+        </div>
+        <div class="metric">
+          <div class="n">11</div>
+          <div class="l">tools tried<br />and abandoned</div>
+        </div>
+        <div class="metric">
+          <div class="n">14<span style="font-size:20px">yr</span></div>
+          <div class="l">in supply-chain<br />systems work</div>
+        </div>
+        <div class="metric">
+          <div class="n">100%</div>
+          <div class="l">affiliate links<br />disclosed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED -->
+  <div class="featured rel">
+    <a href="/blog/research-workflow-replaced-my-analyst" class="featured-card reveal">
+      <div class="fc-text">
+        <div class="lbl">Latest · Workflows No. 01</div>
+        <h3 class="serif">The research workflow that <em>replaced my analyst</em></h3>
+        <p>Half a day of client prep, cut to forty minutes — and the forty minutes are better. The exact Claude + Obsidian pipeline, including the two steps I had to throw away.</p>
+        <span class="read">Read the build → 9 min</span>
+      </div>
+      <div class="fc-vis">
+        <div class="term">
+          <span class="c">// gather → compress → provoke</span><br />
+          <span class="g">$</span> intake --prospect "acme-co"<br />
+          &nbsp;&nbsp;✓ material structured<br />
+          <span class="g">$</span> compress --mode <span class="a">tension</span><br />
+          &nbsp;&nbsp;✓ 3 strategic tensions found<br />
+          <span class="g">$</span> provoke <span class="c"># ← I do this part</span><br />
+          &nbsp;&nbsp;<span class="a">▮</span> forming a point of view…
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- THREE SECTION CARDS -->
+  <div class="wrap rel">
+    <div class="section-head reveal" style="padding-bottom:8px">
+      <div class="eyebrow">Three sections · one practice</div>
+      <h2 class="serif">Read by <em>what you need</em><br />right now.</h2>
+    </div>
+  </div>
+
+  <div class="tri rel">
+    <a href="/workflows" class="tri-card reveal">
+      <div class="ix">01 — Workflows</div>
+      <h3 class="serif">End-to-end automations</h3>
+      <p>The exact pipelines I run, step by step — prompts, tools, and the points where I still intervene by hand.</p>
+      <div class="arrow">Open section →</div>
+    </a>
+    <a href="/tool-decisions" class="tri-card reveal" style="transition-delay:0.08s">
+      <div class="ix">02 — Tool Decisions</div>
+      <h3 class="serif">Frameworks, not listicles</h3>
+      <p>How to choose between tools that look identical on a landing page — decided by living with them for a year.</p>
+      <div class="arrow">Open section →</div>
+    </a>
+    <a href="/systems" class="tri-card reveal" style="transition-delay:0.16s">
+      <div class="ix">03 — Systems</div>
+      <h3 class="serif">Thinking with the machine</h3>
+      <p>Longer essays on using AI as a thinking instrument — rigorous, practitioner-grade, drawn from systems work.</p>
+      <div class="arrow">Open section →</div>
+    </a>
+  </div>
+
+  <NewsletterBand />
+  <Footer slot="footer" />
+</BaseLayout>
+
+<script is:inline>
+  // kinetic hero headline
+  var heroWords = ["The","systems","I","actually","run","—","<em>including</em>","<em>the</em>","<em>parts</em>","<em>that</em>","<em>broke.</em>"];
+  var h1 = document.getElementById('heroH1');
+  if (h1) {
+    heroWords.forEach(function(w, i) {
+      var s = document.createElement('span');
+      s.className = 'word';
+      s.style.animationDelay = (0.15 + i * 0.07) + 's';
+      s.innerHTML = w + '&nbsp;';
+      h1.appendChild(s);
+    });
+  }
+</script>

@@ -1,0 +1,18 @@
+---
+import '../styles/global.css';
+const path = Astro.url.pathname;
+---
+<header>
+  <nav class="nav">
+    <a href="/" class="brand">the<b>/</b>operator<span class="blink"></span></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="/workflows" aria-current={path.startsWith('/workflows') ? 'page' : undefined}>Workflows</a>
+        <a href="/tool-decisions" aria-current={path.startsWith('/tool-decisions') ? 'page' : undefined}>Tool Decisions</a>
+        <a href="/systems" aria-current={path.startsWith('/systems') ? 'page' : undefined}>Systems</a>
+        <a href="/about" aria-current={path === '/about' || path === '/about/' ? 'page' : undefined}>About</a>
+      </div>
+      <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle light/dark">◑</button>
+    </div>
+  </nav>
+</header>

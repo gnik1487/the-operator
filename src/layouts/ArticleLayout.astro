@@ -1,0 +1,64 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import NewsletterBand from '../components/NewsletterBand.astro';
+import ProductCTA from '../components/ProductCTA.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  dek?: string;
+  section: string;
+  metaDescription?: string;
+  wordCount?: number;
+  nextTitle?: string;
+  nextHref?: string;
+}
+const {
+  title,
+  dek,
+  section,
+  metaDescription,
+  wordCount,
+  nextTitle,
+  nextHref,
+} = Astro.props;
+
+const readMin = wordCount ? Math.round(wordCount / 200) : 9;
+const sectionSlug: Record<string, string> = {
+  'Workflows': '/workflows',
+  'Tool Decisions': '/tool-decisions',
+  'Systems': '/systems',
+};
+---
+<BaseLayout title={`${title} — The Operator`} description={metaDescription}>
+  <Nav slot="header" />
+  <div class="wrap narrow rel">
+    <div class="article">
+      <div class="crumb"><b>{section}</b> / <a href={sectionSlug[section]} style="color:var(--muted);text-decoration:none">{section}</a></div>
+      <h1 class="serif" set:html={title.replace(/\*(.+?)\*/g, '<em>$1</em>')} />
+      {dek && <p class="dek">{dek}</p>}
+      <div class="byline">
+        <div class="av">LS</div>
+        <div>By <b>Lavi Sahu</b> &nbsp;·&nbsp; {readMin} min read &nbsp;·&nbsp; Updated this week</div>
+      </div>
+    </div>
+  </div>
+  <div class="prose">
+    <div class="prose-inner">
+      <slot />
+      <ProductCTA />
+      <div class="disclosure">
+        <strong>Disclosure:</strong> Some links on this site are affiliate links — if you buy through them I may earn a commission, at no cost to you. I only recommend tools I actually run, and I tell you when something I tried didn't make the cut. That's the whole promise here.
+      </div>
+      {nextTitle && nextHref && (
+        <div class="article-next">
+          Next → <a href={nextHref}>{nextTitle}</a>
+        </div>
+      )}
+    </div>
+  </div>
+  <NewsletterBand />
+  <Footer slot="footer" />
+</BaseLayout>

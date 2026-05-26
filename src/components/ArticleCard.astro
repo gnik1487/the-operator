@@ -1,0 +1,22 @@
+---
+import '../styles/global.css';
+export interface Props {
+  num: string;
+  title: string;
+  description: string;
+  section: string;
+  wordCount?: number;
+  urlSlug: string;
+}
+const { num, title, description, section, wordCount, urlSlug } = Astro.props;
+const readMin = wordCount ? Math.round(wordCount / 200) : 9;
+---
+<a href={`/blog/${urlSlug}`} class="card reveal">
+  <div class="num">{num}</div>
+  <div class="body">
+    <span class="tag-pill">{section}</span>
+    <h3 class="serif">{title}</h3>
+    <p>{description}</p>
+  </div>
+  <div class="meta">{wordCount ? `${wordCount.toLocaleString()} words` : ''}<br />{readMin} min read</div>
+</a>

@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import NewsletterBand from '../components/NewsletterBand.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import '../styles/global.css';
+
+const articles = (await getCollection('blog', e => e.data.section === 'Systems'))
+  .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+---
+<BaseLayout title="Systems — The Operator" description="Longer essays on using AI as a thinking instrument — practitioner-grade, drawn from supply-chain systems work.">
+  <Nav slot="header" />
+  <div class="wrap rel">
+    <div class="section-head">
+      <div class="eyebrow">Section 03</div>
+      <h2 class="serif">Systems — thinking <em>with</em> the machine</h2>
+      <p>The longer-form work. Less about tools, more about how a senior professional should think when the machine can do the first draft.</p>
+    </div>
+  </div>
+  <div class="cards rel">
+    {articles.map((a, i) => (
+      <ArticleCard
+        num={`No. 0${i + 3}`}
+        title={a.data.title}
+        description={a.data.meta_description ?? ''}
+        section={a.data.section}
+        wordCount={a.data.word_count_target}
+        urlSlug={a.data.urlSlug}
+      />
+    ))}
+  </div>
+  <NewsletterBand />
+  <Footer slot="footer" />
+</BaseLayout>

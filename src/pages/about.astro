@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import NewsletterBand from '../components/NewsletterBand.astro';
+import '../styles/global.css';
+---
+<BaseLayout
+  title="About — The Operator"
+  description="Who writes The Operator, and why the workflows here come from real client work rather than a content farm."
+>
+  <Nav slot="header" />
+
+  <div class="about-hero wrap rel">
+    <h1 class="serif">Built from inside <em>actual work.</em></h1>
+    <p class="sub">Most writing about AI tools is produced by people whose job is producing writing about AI tools. This site is the opposite of that.</p>
+  </div>
+
+  <div class="about-body rel">
+    <p>Everything here is a system I run myself, documented from inside real work — client engagements and a content business — with the failures left in.</p>
+
+    <h2>Who's writing this</h2>
+    <p>I'm Lavi Sahu. For fourteen years I've worked in supply-chain technology consulting, currently as a Director at EY, designing and implementing planning systems — demand planning, inventory optimisation, sales-and-operations planning — for clients in pharma, FMCG, and energy. I did my MBA at NITIE.</p>
+    <p>That background matters here for one specific reason: I think about AI tools the way I think about a planning platform. Not "is it impressive in a demo," but "does it still earn its place in the workflow eighteen months in, when the novelty's gone and the edge cases have shown up." That's a practitioner's question, and it's the question this whole site is built around.</p>
+    <p>I'm also not a full-time creator. I write this while holding a demanding job, which is itself part of the point — the workflows here have to work for someone with no spare hours, because I have none to spare.</p>
+
+    <div class="creds">
+      <div class="cred-card">
+        <div class="org">Current role</div>
+        <div class="role">Director, EY</div>
+        <div class="period">Supply-chain technology consulting</div>
+      </div>
+      <div class="cred-card">
+        <div class="org">Education</div>
+        <div class="role">MBA, NITIE</div>
+        <div class="period">Supply-chain & operations management</div>
+      </div>
+      <div class="cred-card">
+        <div class="org">Experience</div>
+        <div class="role">14 years</div>
+        <div class="period">Pharma, FMCG, energy clients</div>
+      </div>
+      <div class="cred-card">
+        <div class="org">Focus</div>
+        <div class="role">AI automation</div>
+        <div class="period">Consultant & solo operator niche</div>
+      </div>
+    </div>
+
+    <h2>What "shown, not sold" means</h2>
+    <p><strong>I only write about what I actually run.</strong> Not what's trending, not what an affiliate program paid the most for. If a tool isn't genuinely in my own stack, it doesn't appear. The library will grow slower because of this. That's the trade.</p>
+    <p><strong>The failures stay in.</strong> Every workflow here includes the parts that broke — the step I automated and had to delete, the clever idea that quietly made things worse. The failures are usually more useful than the successes.</p>
+    <p><strong>Every affiliate link is disclosed, every time.</strong> Some links here earn me a commission at no cost to you. I'll always tell you which, and I'll tell you when something I tried <em>didn't</em> make my cut — including things I could have earned a commission on. A recommendation you can't trust is worth less than no recommendation.</p>
+
+    <h2>Who this is for</h2>
+    <p>Independent consultants, fractional operators, boutique-firm principals, and senior professionals running something serious on the side — people whose scarcest resource is time, not money, and who would rather understand one workflow deeply than skim ten. If you want the tool-of-the-week hype, there are a thousand sites for that. This isn't one of them.</p>
+    <p>If you want to know what a working practitioner actually keeps using after the novelty wears off — and why — you're in the right place.</p>
+    <p>Start with <a href="/blog/research-workflow-replaced-my-analyst">the research workflow that replaced my analyst</a> — it contains, in one concrete example, the philosophy behind everything else here.</p>
+  </div>
+
+  <NewsletterBand />
+  <Footer slot="footer" />
+</BaseLayout>

@@ -1,0 +1,40 @@
+---
+import { getCollection, render } from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import '../../styles/global.css';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.data.urlSlug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// next article links
+const nextLinks: Record<string, { title: string; href: string }> = {
+  'research-workflow-replaced-my-analyst': {
+    title: 'I tested 4 AI note systems for a year. I kept one.',
+    href: '/blog/tested-4-ai-note-systems-kept-one',
+  },
+  'tested-4-ai-note-systems-kept-one': {
+    title: 'Why I stopped using AI for the part everyone uses it for',
+    href: '/blog/stopped-using-ai-for-what-everyone-uses-it-for',
+  },
+};
+const next = nextLinks[post.data.urlSlug];
+---
+<ArticleLayout
+  title={post.data.title}
+  dek={post.data.meta_description}
+  section={post.data.section}
+  metaDescription={post.data.meta_description}
+  wordCount={post.data.word_count_target}
+  nextTitle={next?.title}
+  nextHref={next?.href}
+>
+  <Content />
+</ArticleLayout>
