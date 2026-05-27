@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
@@ -22,7 +23,20 @@ const TESTIMONIALS = [
   { q: "Half of what gets called 'thought leadership' on LinkedIn is people summarising a free trial. This site is what the real thing looks like.", a: 'Partner, boutique systems-integration firm', tag: 'reader · London' },
 ];
 
-const READBY = ['EY', 'Bain', 'McKinsey', 'BCG', 'Deloitte', 'Accenture', 'KPMG', 'PwC', 'A.T. Kearney', 'Oliver Wyman', 'L.E.K.'];
+const READBY_LINE = 'Read by consultants and operators at firms across the industry.';
+
+const latestOutputs = (await getCollection('fieldOutputs'))
+  .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99))
+  .slice(0, 3);
+
+const kindLabel: Record<string, string> = {
+  'screenshot':   'Screenshot',
+  'diagram':      'Diagram',
+  'before-after': 'Before / After',
+  'prompt-chain': 'Prompt Chain',
+  'flowmap':      'Flow Map',
+  'failure-log':  'Failure Log',
+};
 
 const TOPICS = [
   { tag: 'client-research', n: 4 },
@@ -34,7 +48,7 @@ const TOPICS = [
   { tag: 'failures',        n: 6 },
   { tag: 'second-brain',    n: 2 },
   { tag: 'disclosure',      n: 4 },
-  { tag: 'supply-chain',    n: 2 },
+  { tag: 'enterprise-systems', n: 2 },
 ];
 ---
 <BaseLayout title="automation/diary — AI automation, shown not sold">
@@ -51,8 +65,8 @@ const TOPICS = [
             <h1 class="st-hero-h1">The systems I <em>actually run</em> — including the parts that <em>broke.</em></h1>
             <p class="st-hero-lede">AI workflows documented from inside a working consulting practice — not tool reviews from someone who opened a free trial yesterday. What survives past the novelty. What I cut. What a senior professional should actually copy.</p>
             <div class="st-hero-byline">
-              <span class="av">LS</span>
-              <div class="info">By <b>The Operator</b> · Director, Global Consulting<br />9 min read · Updated this week</div>
+              <span class="av">AD</span>
+              <div class="info">By <b>The Operator</b><br />9 min read · Updated this week</div>
             </div>
             <div class="st-hero-cta">
               <a href="/blog/research-workflow-replaced-my-analyst" class="st-btn primary">Read the cover story →</a>
@@ -147,7 +161,7 @@ const TOPICS = [
         <a href="/systems" class="st-col">
           <div class="meta"><b>§03 · Systems</b><span>3 live</span></div>
           <h3>Thinking <em>with</em> the machine</h3>
-          <p>Longer essays on using AI as a thinking instrument, drawn from supply-chain systems work.</p>
+          <p>Longer essays on using AI as a thinking instrument, drawn from practitioner experience in enterprise systems.</p>
           <div class="open"><span>Enter</span><span>→</span></div>
         </a>
       </div>
@@ -195,6 +209,30 @@ const TOPICS = [
         ))}
       </div>
 
+      <!-- FIELD OUTPUTS STRIP -->
+      <div class="st-section-head">
+        <div>
+          <div class="e">§04 · Field Outputs · latest from the workbench</div>
+          <h2>The work, <em>shown directly.</em></h2>
+        </div>
+        <div class="r"><a href="/field-outputs" style="color:var(--accent);font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none">View all outputs →</a></div>
+      </div>
+      <div class="fo-grid" style="margin-bottom:80px">
+        {latestOutputs.map(a => (
+          <a href={`/field-outputs/${a.data.urlSlug}`} class="fo-card">
+            <div class="fo-img">
+              <img src={a.data.image ?? '/field-outputs/placeholder-1.svg'} alt={a.data.title} loading="lazy" />
+            </div>
+            <div class="fo-body">
+              <div class="fo-kind">{kindLabel[a.data.kind] ?? a.data.kind}</div>
+              <h3>{a.data.title}</h3>
+              <p>{a.data.summary}</p>
+              <div class="fo-read">View artifact →</div>
+            </div>
+          </a>
+        ))}
+      </div>
+
       <!-- TESTIMONIALS -->
       <div class="st-section-head">
         <div>
@@ -215,11 +253,7 @@ const TOPICS = [
 
       <!-- READ BY -->
       <div class="st-readby">
-        <div class="lbl">▮ Read by · personnel at (self-reported on signup, firm-level only)</div>
-        <div class="firms">
-          {READBY.map(f => <span>{f}</span>)}
-          <span class="more">+ 26 other firms</span>
-        </div>
+        <div class="lbl">▮ {READBY_LINE}</div>
       </div>
 
       <!-- TOPICS -->
@@ -241,19 +275,19 @@ const TOPICS = [
       <!-- AUTHOR -->
       <div class="st-author">
         <div class="st-author-img">
-          <span class="lbl">FILED BY</span>
-          <div class="stub">LS</div>
+          <span class="lbl">THE OPERATOR</span>
+          <div class="stub">AD</div>
         </div>
         <div class="st-author-body">
-          <div class="e">About the diary</div>
-          <h2>I write what I <em>actually run.</em></h2>
-          <p>Fourteen years in supply-chain technology consulting, currently at Director level in a Big-4 firm — building demand planning, inventory optimisation, and S&amp;OP systems for clients in pharma, FMCG, and energy. NITIE MBA.</p>
-          <p>My day job is literally building systems that have to survive contact with messy reality. That's why this site exists.</p>
+          <div class="e">About the archive</div>
+          <h2>Filed from inside <em>real work.</em></h2>
+          <p>A highly experienced practitioner in enterprise systems and AI workflows — working at the intersection of complex client engagements and automation tooling. Not a full-time creator; someone with actual skin in the game.</p>
+          <p>Every system in this archive had to survive contact with real deadlines, real clients, and real consequences. That's the only filter that counts.</p>
           <div class="creds">
-            <div class="cred"><div class="k">Current</div><div class="v">Director · Big-4</div></div>
-            <div class="cred"><div class="k">Tenure</div><div class="v">14 years</div></div>
-            <div class="cred"><div class="k">MBA</div><div class="v">NITIE</div></div>
-            <div class="cred"><div class="k">Sectors</div><div class="v">Pharma · FMCG · Energy</div></div>
+            <div class="cred"><div class="k">Voice</div><div class="v">First-person practitioner</div></div>
+            <div class="cred"><div class="k">Standard</div><div class="v">Only what is actually run</div></div>
+            <div class="cred"><div class="k">Failures</div><div class="v">Always included</div></div>
+            <div class="cred"><div class="k">Affiliates</div><div class="v">Disclosed every time</div></div>
           </div>
         </div>
       </div>

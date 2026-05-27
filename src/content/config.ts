@@ -16,4 +16,17 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const fieldOutputs = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    urlSlug: z.string(),
+    kind: z.enum(['screenshot', 'diagram', 'before-after', 'prompt-chain', 'flowmap', 'failure-log']),
+    image: z.string().optional(),
+    summary: z.string(),
+    pubDate: z.coerce.date(),
+    order: z.number().optional(),
+  }),
+});
+
+export const collections = { blog, fieldOutputs };

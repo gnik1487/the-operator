@@ -48,8 +48,8 @@ const sectionNum: Record<string, string> = {
       <h1 set:html={title.replace(/\*(.+?)\*/g, '<em>$1</em>')} />
       {dek && <p class="dek">{dek}</p>}
       <div class="byline">
-        <div class="av">LS</div>
-        <div class="byline-info">By <b>The Operator</b> &nbsp;·&nbsp; {readMin} min read &nbsp;·&nbsp; Updated this week</div>
+        <div class="av">AD</div>
+        <div class="byline-info">By <b>The Operator</b> &nbsp;·&nbsp; {readMin} min read &nbsp;·&nbsp; {wordCount?.toLocaleString() ?? '~1,800'} words</div>
       </div>
     </div>
   </div>
