@@ -77,14 +77,14 @@ const TOPICS = [
       </section>
 
       <!-- THE LATEST -->
-      <div class="st-section-head reveal">
+      <div class="st-section-head">
         <div>
           <div class="e">Issue 012 · features</div>
           <h2>From this <em>month's</em> filing.</h2>
         </div>
         <div class="r">▮ 3 features<br />▮ 1 cover · 2 inside</div>
       </div>
-      <div class="st-stories reveal">
+      <div class="st-stories">
         <article class="st-story big">
           <a href="/blog/research-workflow-replaced-my-analyst" class="story-link">
             <div class="img">
@@ -124,7 +124,7 @@ const TOPICS = [
       </div>
 
       <!-- DEPARTMENTS -->
-      <div class="st-section-head reveal">
+      <div class="st-section-head">
         <div>
           <div class="e">Departments · the standing columns</div>
           <h2>Three sections.<br /><em>One practice.</em></h2>
@@ -132,19 +132,19 @@ const TOPICS = [
         <div class="r">▮ updated as work allows</div>
       </div>
       <div class="st-cols">
-        <a href="/workflows" class="st-col reveal">
+        <a href="/workflows" class="st-col">
           <div class="meta"><b>§01 · Workflows</b><span>4 live</span></div>
           <h3>End-to-end <em>automations</em></h3>
           <p>The exact pipelines I run, step by step — prompts, tools, and where I still intervene by hand.</p>
           <div class="open"><span>Enter</span><span>→</span></div>
         </a>
-        <a href="/tool-decisions" class="st-col reveal">
+        <a href="/tool-decisions" class="st-col">
           <div class="meta"><b>§02 · Tool Decisions</b><span>3 live</span></div>
           <h3>Frameworks, <em>not listicles</em></h3>
           <p>Choosing between tools that look identical on a landing page — decided by living with them for a year.</p>
           <div class="open"><span>Enter</span><span>→</span></div>
         </a>
-        <a href="/systems" class="st-col reveal">
+        <a href="/systems" class="st-col">
           <div class="meta"><b>§03 · Systems</b><span>3 live</span></div>
           <h3>Thinking <em>with</em> the machine</h3>
           <p>Longer essays on using AI as a thinking instrument, drawn from supply-chain systems work.</p>
@@ -159,7 +159,7 @@ const TOPICS = [
       </div>
 
       <!-- FILING LOG -->
-      <div class="st-section-head reveal" id="archive">
+      <div class="st-section-head" id="archive">
         <div>
           <div class="e">The complete archive</div>
           <h2>Everything <em>filed</em> so far.</h2>
@@ -196,7 +196,7 @@ const TOPICS = [
       </div>
 
       <!-- TESTIMONIALS -->
-      <div class="st-section-head reveal">
+      <div class="st-section-head">
         <div>
           <div class="e">Letters · what readers say</div>
           <h2>From the <em>inbox.</em></h2>
@@ -205,7 +205,7 @@ const TOPICS = [
       </div>
       <div class="st-testi">
         {TESTIMONIALS.map(t => (
-          <div class="st-testi-card reveal">
+          <div class="st-testi-card">
             <span class="mark">"</span>
             <p>{t.q}</p>
             <div class="att"><span><b>{t.a}</b></span><span>{t.tag}</span></div>
@@ -214,7 +214,7 @@ const TOPICS = [
       </div>
 
       <!-- READ BY -->
-      <div class="st-readby reveal">
+      <div class="st-readby">
         <div class="lbl">▮ Read by · personnel at (self-reported on signup, firm-level only)</div>
         <div class="firms">
           {READBY.map(f => <span>{f}</span>)}
@@ -223,14 +223,14 @@ const TOPICS = [
       </div>
 
       <!-- TOPICS -->
-      <div class="st-section-head reveal" id="topics">
+      <div class="st-section-head" id="topics">
         <div>
           <div class="e">Browse the archive</div>
           <h2>By <em>topic.</em></h2>
         </div>
         <div class="r">▮ 10 active threads</div>
       </div>
-      <div class="st-topics-grid reveal">
+      <div class="st-topics-grid">
         {TOPICS.map(t => (
           <span class="st-topic-pill">
             <span class="hash">#</span>{t.tag}<span class="n">{t.n}</span>
@@ -239,7 +239,7 @@ const TOPICS = [
       </div>
 
       <!-- AUTHOR -->
-      <div class="st-author reveal">
+      <div class="st-author">
         <div class="st-author-img">
           <span class="lbl">FILED BY</span>
           <div class="stub">LS</div>
