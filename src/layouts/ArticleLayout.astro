@@ -43,8 +43,8 @@ const sectionNum: Record<string, string> = {
       <h1 class="nu-article-h1" set:html={title.replace(/\*(.+?)\*/g, '<em>$1</em>')} />
       {dek && <p class="nu-article-dek">{dek}</p>}
       <div class="nu-article-byline">
-        <div class="av">LS</div>
-        <span><b>The Operator</b> &nbsp;·&nbsp; Director, Global Consulting &nbsp;·&nbsp; {readMin} min read &nbsp;·&nbsp; {wordCount?.toLocaleString() ?? '~1,800'} words</span>
+        <div class="av">AD</div>
+        <span><b>The Operator</b> &nbsp;·&nbsp; {readMin} min read &nbsp;·&nbsp; {wordCount?.toLocaleString() ?? '~1,800'} words</span>
       </div>
     </div>
 

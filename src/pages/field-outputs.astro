@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import NewsletterBand from '../components/NewsletterBand.astro';
+import '../styles/global.css';
+
+const artifacts = (await getCollection('fieldOutputs'))
+  .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+
+const kindLabel: Record<string, string> = {
+  'screenshot':   'Screenshot',
+  'diagram':      'Diagram',
+  'before-after': 'Before / After',
+  'prompt-chain': 'Prompt Chain',
+  'flowmap':      'Flow Map',
+  'failure-log':  'Failure Log',
+};
+---
+<BaseLayout
+  title="Field Outputs — automation/diary"
+  description="Artifacts from the workbench — screenshots, diagrams, prompt chains, and failure logs from real engagements. The work, shown directly."
+>
+  <Nav slot="header" />
+
+  <div class="nu-wrap">
+    <section class="nu-sect" style="padding-bottom:0">
+      <div class="nu-sect-head">
+        <div>
+          <span class="e">▮ §04 · Field Outputs</span>
+          <h2>Artifacts from the <em>workbench.</em></h2>
+        </div>
+        <div class="r">▮ {artifacts.length} artifacts · growing</div>
+      </div>
+      <p style="max-width:640px;color:var(--ink-quiet);font-size:15px;line-height:1.7;margin-bottom:60px">Not articles. Not explanations. The actual outputs — dashboards, prompt chains, flow maps, and failure logs from real engagements. Anonymised; otherwise unchanged.</p>
+    </section>
+
+    <div class="fo-grid">
+      {artifacts.map(a => (
+        <a href={`/field-outputs/${a.data.urlSlug}`} class="fo-card">
+          <div class="fo-img">
+            <img src={a.data.image ?? '/field-outputs/placeholder-1.svg'} alt={a.data.title} loading="lazy" />
+          </div>
+          <div class="fo-body">
+            <div class="fo-kind">{kindLabel[a.data.kind] ?? a.data.kind}</div>
+            <h3>{a.data.title}</h3>
+            <p>{a.data.summary}</p>
+            <div class="fo-read">View artifact →</div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="fo-note">
+      <p>All artifacts are anonymised — client and engagement details have been removed. The patterns, structures, and failure modes are real; the specific context is not shown.</p>
+    </div>
+  </div>
+
+  <div class="nu-wrap" style="padding-bottom:90px">
+    <NewsletterBand />
+  </div>
+  <Footer slot="footer" />
+</BaseLayout>

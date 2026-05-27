@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
@@ -22,7 +23,20 @@ const TESTIMONIALS = [
   { q: "Half of what gets called 'thought leadership' on LinkedIn is people summarising a free trial. This site is what the real thing looks like.", a: 'Partner, boutique systems-integration firm', tag: 'reader · London' },
 ];
 
-const READBY = ['EY', 'Bain', 'McKinsey', 'BCG', 'Deloitte', 'Accenture', 'KPMG', 'PwC', 'A.T. Kearney', 'Oliver Wyman', 'L.E.K.', 'EY', 'Bain', 'McKinsey', 'BCG', 'Deloitte', 'Accenture', 'KPMG', 'PwC', 'A.T. Kearney', 'Oliver Wyman', 'L.E.K.'];
+const READBY_LINE = 'Read by consultants and operators at firms across the industry.';
+
+const latestOutputs = (await getCollection('fieldOutputs'))
+  .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99))
+  .slice(0, 3);
+
+const kindLabel: Record<string, string> = {
+  'screenshot':   'Screenshot',
+  'diagram':      'Diagram',
+  'before-after': 'Before / After',
+  'prompt-chain': 'Prompt Chain',
+  'flowmap':      'Flow Map',
+  'failure-log':  'Failure Log',
+};
 
 const TOPICS = [
   { tag: 'client-research', n: 4 },
@@ -34,7 +48,7 @@ const TOPICS = [
   { tag: 'failures',        n: 6 },
   { tag: 'second-brain',    n: 2 },
   { tag: 'disclosure',      n: 4 },
-  { tag: 'supply-chain',    n: 2 },
+  { tag: 'enterprise-systems', n: 2 },
 ];
 ---
 <BaseLayout title="automation/diary — AI automation, shown not sold">
@@ -154,10 +168,7 @@ const TOPICS = [
 
     <!-- MARQUEE -->
     <div class="nu-marquee">
-      <span class="nu-marquee-lbl">Read by personnel at</span>
-      <div class="nu-marquee-track">
-        {READBY.map((f, i) => <span key={i}>{f} —&nbsp;</span>)}
-      </div>
+      <span class="nu-marquee-lbl">{READBY_LINE}</span>
     </div>
 
     <div class="nu-wrap">
@@ -167,8 +178,8 @@ const TOPICS = [
         <div class="nu-metrics">
           <div class="nu-metric">
             <div class="ix"><span>METRIC.01</span><span style="color:var(--accent)">● live</span></div>
-            <div class="n">14<sup>yr</sup></div>
-            <div class="l">Years in supply-chain consulting</div>
+            <div class="n">18<sup>mo</sup></div>
+            <div class="l">Minimum trial before a tool is written about</div>
           </div>
           <div class="nu-metric">
             <div class="ix"><span>METRIC.02</span><span style="color:var(--accent)">● live</span></div>
@@ -356,28 +367,49 @@ const TOPICS = [
       <section class="nu-sect" style="padding-top:40px">
         <div class="nu-sect-head">
           <div>
-            <span class="e">▮ Operator</span>
-            <h2>I write what I <em>actually run.</em></h2>
+            <span class="e">▮ The Operator</span>
+            <h2>Filed from inside <em>real work.</em></h2>
           </div>
-          <div class="r">▮ filed from Bengaluru<br/>▮ no ghost-writers, ever</div>
+          <div class="r">▮ no ghost-writers, ever<br/>▮ no demos · only what runs</div>
         </div>
         <div class="nu-author">
           <div class="nu-author-img">
-            <span class="stamp">▮ FILED BY</span>
-            <span class="glyph">LS</span>
+            <span class="stamp">▮ THE OPERATOR</span>
+            <span class="glyph">AD</span>
           </div>
           <div class="nu-author-body">
-            <span class="e">▮ About the operator</span>
-            <h2>The site exists because my <em>day job</em> is building systems that survive contact with messy reality.</h2>
-            <p>Fourteen years in supply-chain technology consulting, currently at Director level in a Big-4 firm — building demand planning, inventory optimisation, and S&amp;OP systems for clients in pharma, FMCG, and energy. NITIE MBA.</p>
-            <p>I think about AI tools the way I think about a planning platform: not "is it impressive in a demo," but "does it still earn its place eighteen months in, when the novelty's gone."</p>
+            <span class="e">▮ About the archive</span>
+            <h2>The work here had to survive <em>real deadlines, real clients, real consequences.</em></h2>
+            <p>A highly experienced practitioner in enterprise systems and AI workflows — working at the intersection of complex client engagements and automation tooling. Not a full-time creator; someone with actual skin in the game.</p>
+            <p>I think about AI tools the way I think about any operational platform: not "is it impressive in a demo," but "does it still earn its place eighteen months in, when the novelty's gone."</p>
             <div class="creds">
-              <div class="cred"><div class="k">Current</div><div class="v">Director · Big-4</div></div>
-              <div class="cred"><div class="k">Tenure</div><div class="v">14 years</div></div>
-              <div class="cred"><div class="k">MBA</div><div class="v">NITIE</div></div>
-              <div class="cred"><div class="k">Sectors</div><div class="v">Pharma · FMCG · Energy</div></div>
+              <div class="cred"><div class="k">Voice</div><div class="v">First-person practitioner</div></div>
+              <div class="cred"><div class="k">Standard</div><div class="v">Only what is actually run</div></div>
+              <div class="cred"><div class="k">Failures</div><div class="v">Always included</div></div>
+              <div class="cred"><div class="k">Affiliates</div><div class="v">Disclosed every time</div></div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- FIELD OUTPUTS STRIP -->
+      <section class="nu-sect">
+        <div class="nu-sect-head">
+          <div>
+            <span class="e">▮ §04 Field Outputs · latest from the workbench</span>
+            <h2>The work, <em>shown directly.</em></h2>
+          </div>
+          <div class="r"><a href="/field-outputs" style="color:var(--accent);font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none">View all →</a></div>
+        </div>
+        <div class="nu-dept-grid">
+          {latestOutputs.map(a => (
+            <a href={`/field-outputs/${a.data.urlSlug}`} class="nu-dept-card" style="text-decoration:none">
+              <div class="num">{kindLabel[a.data.kind] ?? a.data.kind}</div>
+              <h3>{a.data.title}</h3>
+              <p>{a.data.summary}</p>
+              <span class="dept-link">View artifact →</span>
+            </a>
+          ))}
         </div>
       </section>
 

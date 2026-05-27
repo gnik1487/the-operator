@@ -1,0 +1,78 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import NewsletterBand from '../../components/NewsletterBand.astro';
+import '../../styles/global.css';
+
+export async function getStaticPaths() {
+  const artifacts = await getCollection('fieldOutputs');
+  return artifacts.map(a => ({
+    params: { slug: a.data.urlSlug },
+    props: { artifact: a },
+  }));
+}
+
+const { artifact } = Astro.props;
+const { Content } = await render(artifact);
+
+const kindLabel: Record<string, string> = {
+  'screenshot':   'Screenshot',
+  'diagram':      'Diagram',
+  'before-after': 'Before / After',
+  'prompt-chain': 'Prompt Chain',
+  'flowmap':      'Flow Map',
+  'failure-log':  'Failure Log',
+};
+---
+<BaseLayout
+  title={`${artifact.data.title} — automation/diary`}
+  description={artifact.data.summary}
+  ogType="article"
+>
+  <Nav slot="header" />
+
+  <div class="nu-wrap">
+    <div class="nu-article-head">
+      <div class="nu-article-crumb">
+        <a href="/">automation/diary</a>
+        <span style="color:var(--line-2)">/</span>
+        <a href="/field-outputs">§04 Field Outputs</a>
+      </div>
+      <div class="fo-kind-badge">{kindLabel[artifact.data.kind] ?? artifact.data.kind}</div>
+      <h1 class="nu-article-h1">{artifact.data.title}</h1>
+      <p class="nu-article-dek">{artifact.data.summary}</p>
+      <div class="nu-article-byline">
+        <div class="av">AD</div>
+        <span><b>The Operator</b> &nbsp;·&nbsp; Field Output &nbsp;·&nbsp; Anonymised</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="fo-artifact-img nu-wrap">
+    <img
+      src={artifact.data.image ?? '/field-outputs/placeholder-1.svg'}
+      alt={artifact.data.title}
+      class="fo-full-img"
+    />
+    <p class="fo-img-caption">Anonymised artifact — client and engagement context removed.</p>
+  </div>
+
+  <div class="nu-wrap">
+    <div class="nu-prose">
+      <Content />
+      <div class="disclosure">
+        <strong>Note:</strong> All artifacts shown here are anonymised. Client, project, and engagement details have been removed or generalised. The operational patterns and failure modes are real; identifying context is not.
+      </div>
+      <div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase">
+        ← <a href="/field-outputs" style="color:var(--accent)">Back to all field outputs</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nu-wrap" style="padding-bottom:90px">
+    <NewsletterBand />
+  </div>
+  <Footer slot="footer" />
+</BaseLayout>
