@@ -16,20 +16,18 @@ const articles = (await getCollection('blog', e => e.data.section === 'Systems')
 >
   <Nav slot="header" />
 
-  <div class="wrap">
+  <div class="nu-wrap">
     <div class="section-page-header">
       <div class="crumb">§03 · Systems</div>
       <h1>Thinking <em>with</em> the machine</h1>
       <p class="strap">Longer-form essays. Less about tools, more about how a senior professional should think when the machine can do the first draft.</p>
     </div>
 
-    <div class="st-log">
-      <div class="st-log-head">
-        <span>№</span>
-        <span>TITLE</span>
-        <span>DEPARTMENT</span>
-        <span>EXTENT</span>
-        <span>STATUS</span>
+    <div class="nu-log">
+      <div class="nu-log-head">
+        <span class="l">▮ §03 — systems</span>
+        <span>{articles.length} live</span>
+        <span style="display:none"></span>
       </div>
       {articles.map((a, i) => (
         <ArticleCard
@@ -44,6 +42,8 @@ const articles = (await getCollection('blog', e => e.data.section === 'Systems')
     </div>
   </div>
 
-  <NewsletterBand />
+  <div class="nu-wrap" style="padding-bottom:90px;margin-top:60px">
+    <NewsletterBand />
+  </div>
   <Footer slot="footer" />
 </BaseLayout>

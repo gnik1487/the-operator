@@ -8,13 +8,19 @@ export interface Props {
   wordCount?: number;
   urlSlug: string;
 }
-const { num, title, description, section, wordCount, urlSlug } = Astro.props;
+const { num, title, section, wordCount, urlSlug } = Astro.props;
 const readMin = wordCount ? Math.round(wordCount / 200) : 9;
+
+const sectionNum: Record<string, string> = {
+  'Workflows': '01',
+  'Tool Decisions': '02',
+  'Systems': '03',
+};
 ---
-<a href={`/blog/${urlSlug}`} class="st-log-row">
+<a href={`/blog/${urlSlug}`} class="nu-log-row">
   <span class="no">{num}</span>
   <span class="tt">{title}</span>
-  <span class="sec">{section}</span>
+  <span class="sec">§{sectionNum[section] ?? '00'} · {section}</span>
   <span class="meta">{wordCount ? `${wordCount.toLocaleString()} w` : ''} · {readMin} min</span>
-  <span class="stat live">Live</span>
+  <span class="stat"><span class="pill live"><span class="dot"></span>Live</span></span>
 </a>

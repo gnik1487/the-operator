@@ -12,18 +12,11 @@ export interface Props {
   section: string;
   metaDescription?: string;
   wordCount?: number;
+  articleNum?: string;
   nextTitle?: string;
   nextHref?: string;
 }
-const {
-  title,
-  dek,
-  section,
-  metaDescription,
-  wordCount,
-  nextTitle,
-  nextHref,
-} = Astro.props;
+const { title, dek, section, metaDescription, wordCount, nextTitle, nextHref } = Astro.props;
 
 const readMin = wordCount ? Math.round(wordCount / 200) : 9;
 const sectionSlug: Record<string, string> = {
@@ -40,37 +33,37 @@ const sectionNum: Record<string, string> = {
 <BaseLayout title={`${title} — automation/diary`} description={metaDescription} ogType="article">
   <Nav slot="header" />
 
-  <div class="wrap">
-    <div class="art-header">
-      <div class="crumb">
-        <a href="/">automation/diary</a> / <a href={sectionSlug[section]}>§{sectionNum[section]} {section}</a>
+  <div class="nu-wrap">
+    <div class="nu-article-head">
+      <div class="nu-article-crumb">
+        <a href="/">automation/diary</a>
+        <span style="color:var(--line-2)">/</span>
+        <a href={sectionSlug[section]}>§{sectionNum[section]} {section}</a>
       </div>
-      <h1 set:html={title.replace(/\*(.+?)\*/g, '<em>$1</em>')} />
-      {dek && <p class="dek">{dek}</p>}
-      <div class="byline">
+      <h1 class="nu-article-h1" set:html={title.replace(/\*(.+?)\*/g, '<em>$1</em>')} />
+      {dek && <p class="nu-article-dek">{dek}</p>}
+      <div class="nu-article-byline">
         <div class="av">LS</div>
-        <div class="byline-info">By <b>Lavi Sahu</b> &nbsp;·&nbsp; {readMin} min read &nbsp;·&nbsp; Updated this week</div>
+        <span><b>The Operator</b> &nbsp;·&nbsp; Director, Global Consulting &nbsp;·&nbsp; {readMin} min read &nbsp;·&nbsp; {wordCount?.toLocaleString() ?? '~1,800'} words</span>
       </div>
     </div>
-  </div>
 
-  <div class="prose">
-    <div class="wrap">
-      <div class="prose-inner">
-        <slot />
-        <ProductCTA />
-        <div class="disclosure">
-          <strong>Disclosure:</strong> Some links on this site are affiliate links — if you buy through them I may earn a commission, at no cost to you. I only recommend tools I actually run, and I tell you when something I tried didn't make the cut. That's the whole promise here.
+    <div class="nu-prose">
+      <slot />
+      <ProductCTA />
+      <div class="disclosure">
+        <strong>Disclosure:</strong> Some links on this site are affiliate links — if you buy through them I may earn a commission, at no cost to you. I only recommend tools I actually run, and I tell you when something I tried didn't make the cut.
+      </div>
+      {nextTitle && nextHref && (
+        <div style="margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-quiet)">
+          Next → <a href={nextHref} style="color:var(--accent)">{nextTitle}</a>
         </div>
-        {nextTitle && nextHref && (
-          <div class="article-next">
-            Next → <a href={nextHref}>{nextTitle}</a>
-          </div>
-        )}
-      </div>
+      )}
     </div>
   </div>
 
-  <NewsletterBand />
+  <div class="nu-wrap" style="padding-bottom:90px">
+    <NewsletterBand />
+  </div>
   <Footer slot="footer" />
 </BaseLayout>

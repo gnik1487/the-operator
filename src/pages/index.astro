@@ -6,13 +6,13 @@ import NewsletterBand from '../components/NewsletterBand.astro';
 import '../styles/global.css';
 
 const ARTICLES = [
-  { no: '01', section: 'Workflows',     sNum: '01', title: 'The research workflow that replaced my analyst',           words: 1800, mins: 9,  status: 'live',   slug: 'research-workflow-replaced-my-analyst' },
-  { no: '02', section: 'Tool Decisions',sNum: '02', title: 'I tested 4 AI note systems for a year. I kept one.',      words: 2200, mins: 11, status: 'live',   slug: 'tested-4-ai-note-systems-kept-one' },
-  { no: '03', section: 'Workflows',     sNum: '01', title: 'The meeting-notes-to-deliverable pipeline',               words: 1900, mins: 9,  status: 'queued', slug: '' },
+  { no: '01', section: 'Workflows',     sNum: '01', title: 'The research workflow that replaced my analyst',            words: 1800, mins: 9,  status: 'live',   slug: 'research-workflow-replaced-my-analyst' },
+  { no: '02', section: 'Tool Decisions',sNum: '02', title: 'I tested 4 AI note systems for a year. I kept one.',       words: 2200, mins: 11, status: 'live',   slug: 'tested-4-ai-note-systems-kept-one' },
+  { no: '03', section: 'Workflows',     sNum: '01', title: 'The meeting-notes-to-deliverable pipeline',                words: 1900, mins: 9,  status: 'queued', slug: '' },
   { no: '04', section: 'Systems',       sNum: '03', title: 'Why I stopped using AI for the part everyone uses it for', words: 1600, mins: 8,  status: 'live',   slug: 'stopped-using-ai-for-what-everyone-uses-it-for' },
-  { no: '05', section: 'Tool Decisions',sNum: '02', title: 'My entire consulting AI stack — and what each costs me',  words: 2400, mins: 12, status: 'queued', slug: '' },
-  { no: '06', section: 'Workflows',     sNum: '01', title: 'The proposal-drafting system that tripled my output',     words: 2000, mins: 10, status: 'queued', slug: '' },
-  { no: '07', section: 'Tool Decisions',sNum: '02', title: 'How to pick a tool when every review is an affiliate ad', words: 1800, mins: 9,  status: 'queued', slug: '' },
+  { no: '05', section: 'Tool Decisions',sNum: '02', title: 'My entire consulting AI stack — and what each costs me',   words: 2400, mins: 12, status: 'queued', slug: '' },
+  { no: '06', section: 'Workflows',     sNum: '01', title: 'The proposal-drafting system that tripled my output',      words: 2000, mins: 10, status: 'queued', slug: '' },
+  { no: '07', section: 'Tool Decisions',sNum: '02', title: 'How to pick a tool when every review is an affiliate ad',  words: 1800, mins: 9,  status: 'queued', slug: '' },
 ];
 
 const TESTIMONIALS = [
@@ -22,7 +22,7 @@ const TESTIMONIALS = [
   { q: "Half of what gets called 'thought leadership' on LinkedIn is people summarising a free trial. This site is what the real thing looks like.", a: 'Partner, boutique systems-integration firm', tag: 'reader · London' },
 ];
 
-const READBY = ['EY', 'Bain', 'McKinsey', 'BCG', 'Deloitte', 'Accenture', 'KPMG', 'PwC', 'A.T. Kearney', 'Oliver Wyman', 'L.E.K.'];
+const READBY = ['EY', 'Bain', 'McKinsey', 'BCG', 'Deloitte', 'Accenture', 'KPMG', 'PwC', 'A.T. Kearney', 'Oliver Wyman', 'L.E.K.', 'EY', 'Bain', 'McKinsey', 'BCG', 'Deloitte', 'Accenture', 'KPMG', 'PwC', 'A.T. Kearney', 'Oliver Wyman', 'L.E.K.'];
 
 const TOPICS = [
   { tag: 'client-research', n: 4 },
@@ -38,229 +38,354 @@ const TOPICS = [
 ];
 ---
 <BaseLayout title="automation/diary — AI automation, shown not sold">
-  <Nav showMasthead={true} slot="header" />
+  <Nav slot="header" />
 
   <main>
-    <div class="wrap">
+    <!-- HERO -->
+    <section class="nu-hero">
+      <div class="nu-wrap">
+        <span class="nu-hero-tag">
+          <span class="dot"></span>
+          <span>Briefing 012 — <b>live</b></span>
+        </span>
 
-      <!-- HERO -->
-      <section class="st-hero">
-        <div class="st-hero-grid">
-          <div class="st-hero-text">
-            <div class="eyebrow">Cover story · Issue 012 · §01 Workflows</div>
-            <h1 class="st-hero-h1">The systems I <em>actually run</em> — including the parts that <em>broke.</em></h1>
-            <p class="st-hero-lede">AI workflows documented from inside a working consulting practice — not tool reviews from someone who opened a free trial yesterday. What survives past the novelty. What I cut. What a senior professional should actually copy.</p>
-            <div class="st-hero-byline">
-              <span class="av">LS</span>
-              <div class="info">By <b>Lavi Sahu</b> · Director, EY Supply-Chain Tech<br />9 min read · Updated this week</div>
-            </div>
-            <div class="st-hero-cta">
-              <a href="/blog/research-workflow-replaced-my-analyst" class="st-btn primary">Read the cover story →</a>
-              <a href="/workflows" class="st-btn ghost">Browse all workflows</a>
+        <h1 class="nu-hero-h1">
+          The systems I <em>actually run</em> — including the parts that <em>broke.</em>
+        </h1>
+
+        <div class="nu-hero-grid">
+          <div>
+            <p class="nu-hero-lede">
+              AI workflows documented from inside a working consulting practice — <mark>not tool reviews from someone who opened a free trial yesterday.</mark> What survives past the novelty. What I cut. What a senior professional should actually copy.
+            </p>
+            <div class="nu-hero-cta">
+              <a href="/blog/research-workflow-replaced-my-analyst" class="nu-btn primary">Read the latest →</a>
+              <a href="/workflows" class="nu-btn ghost">Browse the archive</a>
             </div>
           </div>
 
-          <div class="st-cover">
-            <div class="grid-pattern"></div>
-            <span class="stamp">ISSUE 012 · COVER</span>
-            <span class="corner">№ 01 / WORKFLOWS</span>
-            <div class="center-mark">40<em>min</em></div>
-            <div class="ascii">gather  →  compress  →  provoke
-        ↑
-   human · always</div>
-            <div class="caption">
-              <span>"Forty minutes, a real point of view at the end of it."</span>
-              <span>p.3</span>
+          <!-- Neural network panel -->
+          <div class="nu-brain">
+            <div class="nu-brain-head">
+              <span>▮ live · briefing engine</span>
+              <span class="live">running</span>
+            </div>
+            <div class="nu-brain-viz">
+              <svg viewBox="0 0 380 220" preserveAspectRatio="xMidYMid meet">
+                <!-- edges layer 0→1 -->
+                <line class="link active" x1="76" y1="55"  x2="152" y2="37"  />
+                <line class="link"        x1="76" y1="55"  x2="152" y2="81"  />
+                <line class="link active" x1="76" y1="55"  x2="152" y2="125" />
+                <line class="link"        x1="76" y1="55"  x2="152" y2="169" />
+                <line class="link active" x1="76" y1="55"  x2="152" y2="213" />
+                <line class="link"        x1="76" y1="110" x2="152" y2="37"  />
+                <line class="link active" x1="76" y1="110" x2="152" y2="81"  />
+                <line class="link"        x1="76" y1="110" x2="152" y2="125" />
+                <line class="link active" x1="76" y1="110" x2="152" y2="169" />
+                <line class="link"        x1="76" y1="110" x2="152" y2="213" />
+                <line class="link active" x1="76" y1="165" x2="152" y2="37"  />
+                <line class="link"        x1="76" y1="165" x2="152" y2="81"  />
+                <line class="link active" x1="76" y1="165" x2="152" y2="125" />
+                <line class="link"        x1="76" y1="165" x2="152" y2="169" />
+                <line class="link active" x1="76" y1="165" x2="152" y2="213" />
+                <!-- edges layer 1→2 -->
+                <line class="link"        x1="152" y1="37"  x2="228" y2="37"  />
+                <line class="link active" x1="152" y1="37"  x2="228" y2="81"  />
+                <line class="link"        x1="152" y1="37"  x2="228" y2="125" />
+                <line class="link active" x1="152" y1="37"  x2="228" y2="169" />
+                <line class="link"        x1="152" y1="37"  x2="228" y2="213" />
+                <line class="link active" x1="152" y1="81"  x2="228" y2="37"  />
+                <line class="link"        x1="152" y1="81"  x2="228" y2="81"  />
+                <line class="link active" x1="152" y1="81"  x2="228" y2="125" />
+                <line class="link"        x1="152" y1="125" x2="228" y2="81"  />
+                <line class="link active" x1="152" y1="125" x2="228" y2="125" />
+                <line class="link"        x1="152" y1="125" x2="228" y2="169" />
+                <line class="link active" x1="152" y1="169" x2="228" y2="125" />
+                <line class="link"        x1="152" y1="169" x2="228" y2="169" />
+                <line class="link active" x1="152" y1="169" x2="228" y2="213" />
+                <line class="link"        x1="152" y1="213" x2="228" y2="169" />
+                <line class="link active" x1="152" y1="213" x2="228" y2="213" />
+                <!-- edges layer 2→3 -->
+                <line class="link active" x1="228" y1="37"  x2="304" y2="55"  />
+                <line class="link"        x1="228" y1="81"  x2="304" y2="55"  />
+                <line class="link active" x1="228" y1="81"  x2="304" y2="110" />
+                <line class="link"        x1="228" y1="125" x2="304" y2="55"  />
+                <line class="link active" x1="228" y1="125" x2="304" y2="110" />
+                <line class="link"        x1="228" y1="125" x2="304" y2="165" />
+                <line class="link active" x1="228" y1="169" x2="304" y2="110" />
+                <line class="link"        x1="228" y1="169" x2="304" y2="165" />
+                <line class="link active" x1="228" y1="213" x2="304" y2="165" />
+                <!-- layer 0 nodes -->
+                <circle class="node firing" cx="76"  cy="55"  r="4" style="animation-delay:0s"/>
+                <circle class="node dim"    cx="76"  cy="110" r="2.5"/>
+                <circle class="node firing" cx="76"  cy="165" r="4" style="animation-delay:.24s"/>
+                <!-- layer 1 nodes -->
+                <circle class="node dim"    cx="152" cy="37"  r="2.5"/>
+                <circle class="node firing" cx="152" cy="81"  r="4" style="animation-delay:.08s"/>
+                <circle class="node firing" cx="152" cy="125" r="4" style="animation-delay:.32s"/>
+                <circle class="node dim"    cx="152" cy="169" r="2.5"/>
+                <circle class="node firing" cx="152" cy="213" r="4" style="animation-delay:.56s"/>
+                <!-- layer 2 nodes -->
+                <circle class="node firing" cx="228" cy="37"  r="4" style="animation-delay:.16s"/>
+                <circle class="node dim"    cx="228" cy="81"  r="2.5"/>
+                <circle class="node firing" cx="228" cy="125" r="4" style="animation-delay:.40s"/>
+                <circle class="node firing" cx="228" cy="169" r="4" style="animation-delay:.64s"/>
+                <circle class="node dim"    cx="228" cy="213" r="2.5"/>
+                <!-- layer 3 nodes -->
+                <circle class="node dim"    cx="304" cy="55"  r="2.5"/>
+                <circle class="node firing" cx="304" cy="110" r="4" style="animation-delay:.48s"/>
+                <circle class="node firing" cx="304" cy="165" r="4" style="animation-delay:.72s"/>
+              </svg>
+            </div>
+            <div class="nu-brain-stats">
+              <div><b>3</b><span>stages</span></div>
+              <div><b>2/3</b><span>automated</span></div>
+              <div><b>40min</b><span>per file</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nu-cue">
+        <span>scroll</span>
+        <span class="arrow"></span>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="nu-marquee">
+      <span class="nu-marquee-lbl">Read by personnel at</span>
+      <div class="nu-marquee-track">
+        {READBY.map((f, i) => <span key={i}>{f} —&nbsp;</span>)}
+      </div>
+    </div>
+
+    <div class="nu-wrap">
+
+      <!-- METRICS -->
+      <section class="nu-sect" style="padding-top:90px;padding-bottom:0">
+        <div class="nu-metrics">
+          <div class="nu-metric">
+            <div class="ix"><span>METRIC.01</span><span style="color:var(--accent)">● live</span></div>
+            <div class="n">14<sup>yr</sup></div>
+            <div class="l">Years in supply-chain consulting</div>
+          </div>
+          <div class="nu-metric">
+            <div class="ix"><span>METRIC.02</span><span style="color:var(--accent)">● live</span></div>
+            <div class="n">40<sup>min</sup></div>
+            <div class="l">From prep to point of view</div>
+          </div>
+          <div class="nu-metric">
+            <div class="ix"><span>METRIC.03</span><span style="color:var(--accent)">● live</span></div>
+            <div class="n">83<sup>%</sup></div>
+            <div class="l">Time saved per research session</div>
+          </div>
+          <div class="nu-metric">
+            <div class="ix"><span>METRIC.04</span><span style="color:var(--accent)">● live</span></div>
+            <div class="n">0</div>
+            <div class="l">Affiliate posts without disclosure</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PIPELINE -->
+      <section class="nu-sect">
+        <div class="nu-sect-head">
+          <div>
+            <span class="e">▮ The pattern · every file on this site</span>
+            <h2><em>Machine proposes.</em><br/>Human disposes.</h2>
+          </div>
+          <div class="r">▮ three stages<br/>▮ two automated<br/>▮ one never will be</div>
+        </div>
+        <div class="nu-pipeline">
+          <div class="nu-stage">
+            <div class="n">01</div>
+            <h4>Gather <em>·</em></h4>
+            <div class="stage-meta"><b>AUTO</b> · ≈ 5 min · by hand curation</div>
+            <p>Plain markdown. One vault. Quality of input sets the ceiling — five minutes of human curation beats any amount of automated collection.</p>
+            <div class="out">
+              <span class="a">→</span> 1 structured note<br/>
+              <span class="a">→</span> 3 industry sources<br/>
+              <span class="a">→</span> 1 reusable template
+            </div>
+          </div>
+          <div class="nu-stage">
+            <div class="n">02</div>
+            <h4>Compress <em>·</em></h4>
+            <div class="stage-meta"><b>AUTO</b> · ≈ 2 min · by Claude</div>
+            <p>Contrast, not summary. The prompt asks for three strategic tensions, not a paragraph. Tension is where the meeting lives.</p>
+            <div class="out">
+              <span class="a">→</span> 3 strategic tensions<br/>
+              <span class="a">→</span> evidence per tension<br/>
+              <span class="a">→</span> the avoided question
+            </div>
+          </div>
+          <div class="nu-stage manual">
+            <div class="n">03</div>
+            <h4>Provoke <em>·</em></h4>
+            <div class="stage-meta"><b>HUMAN</b> · ≈ 30 min · by you</div>
+            <p>Argue with each tension. Discard one on purpose. Form one point of view sharp enough to be wrong in an interesting way.</p>
+            <div class="out">
+              <span class="m">→</span> 1 lead point of view<br/>
+              <span class="m">→</span> 1 deliberately discarded<br/>
+              <span class="m">→</span> a note that compounds
             </div>
           </div>
         </div>
       </section>
 
-      <!-- THE LATEST -->
-      <div class="st-section-head">
-        <div>
-          <div class="e">Issue 012 · features</div>
-          <h2>From this <em>month's</em> filing.</h2>
+      <!-- FEATURE -->
+      <section class="nu-sect" style="padding-top:40px">
+        <div class="nu-sect-head">
+          <div>
+            <span class="e">▮ This week · cover briefing</span>
+            <h2>The research workflow that <em>replaced my analyst</em>.</h2>
+          </div>
+          <div class="r">▮ live<br/>▮ rev.04 · 1,800 w<br/>▮ 9 min read</div>
         </div>
-        <div class="r">▮ 3 features<br />▮ 1 cover · 2 inside</div>
-      </div>
-      <div class="st-stories">
-        <article class="st-story big">
-          <a href="/blog/research-workflow-replaced-my-analyst" class="story-link">
-            <div class="img">
-              <div class="img-stub"><span class="glyph">01</span></div>
-              <span class="img-cap">Cover · §01 Workflows</span>
-            </div>
-            <div class="tag">▮ Workflows · cover story</div>
-            <h3>The research workflow that <em>replaced my analyst.</em></h3>
+        <div class="nu-feature">
+          <div class="nu-feature-l">
+            <span class="pill">▮ §01 · workflows · file 01</span>
+            <h3>Forty minutes, a real point of view at the end of it.</h3>
             <p>Half a day of client prep, cut to forty minutes — and the forty minutes are better. The exact Claude + Obsidian pipeline, including the two steps I had to throw away.</p>
-            <div class="by"><span>By <b>Lavi Sahu</b></span><span>1,800 w · 9 min</span></div>
-          </a>
-        </article>
-        <article class="st-story">
-          <a href="/blog/tested-4-ai-note-systems-kept-one" class="story-link">
-            <div class="img">
-              <div class="img-stub"><span class="glyph">02</span></div>
-              <span class="img-cap">Inside · §02 Tool Decisions</span>
+            <div class="feat-meta">
+              <div><b>40m</b>runtime</div>
+              <div><b>3</b>stages</div>
+              <div><b>2</b>failures kept</div>
+              <div><b>$29</b>template</div>
             </div>
-            <div class="tag">▮ Tool Decisions</div>
-            <h3>I tested 4 AI note systems for a year. <em>I kept one.</em></h3>
-            <p>A practitioner's teardown of AI-augmented note systems for client work — and the framework behind the verdict.</p>
-            <div class="by"><span>By <b>Lavi Sahu</b></span><span>11 min</span></div>
-          </a>
-        </article>
-        <article class="st-story">
-          <a href="/blog/stopped-using-ai-for-what-everyone-uses-it-for" class="story-link">
-            <div class="img">
-              <div class="img-stub"><span class="glyph">04</span></div>
-              <span class="img-cap">Essay · §03 Systems</span>
+            <div class="feat-btns">
+              <a href="/blog/research-workflow-replaced-my-analyst" class="nu-btn primary">Read briefing 01 →</a>
+              <a href="#" class="nu-btn ghost">Get the $29 template</a>
             </div>
-            <div class="tag">▮ Systems essay</div>
-            <h3>Why I stopped using AI for the part <em>everyone uses it for.</em></h3>
-            <p>The one task senior professionals should never automate — and why the time savings are a trap.</p>
-            <div class="by"><span>By <b>Lavi Sahu</b></span><span>8 min</span></div>
-          </a>
-        </article>
-      </div>
-
-      <!-- DEPARTMENTS -->
-      <div class="st-section-head">
-        <div>
-          <div class="e">Departments · the standing columns</div>
-          <h2>Three sections.<br /><em>One practice.</em></h2>
+          </div>
+          <div class="nu-feature-r">
+            <div>
+              <span class="c">// the workflow this site is built around</span><br/>
+              <span class="prompt">$</span> intake <span class="a">--prospect "acme-co"</span><br/>
+              <span class="c">&nbsp;&nbsp;✓ structured · 4.2s</span><br/>
+              <span class="prompt">$</span> compress <span class="a">--mode tension --n 3</span><br/>
+              <span class="c">&nbsp;&nbsp;✓ 3 tensions · 18s</span><br/>
+              <span class="prompt">$</span> provoke <span class="c"># human · always</span><br/>
+              <span class="c">&nbsp;&nbsp;</span><span class="a">▮</span> tension A · real or obvious?<br/>
+              <span class="c">&nbsp;&nbsp;</span><span class="a">▮</span> tension B · would-be-wrong-if?<br/>
+              <span class="c">&nbsp;&nbsp;</span><span class="a">▮</span> tension C · cut on purpose<br/>
+              <br/>
+              <span class="c">// total · 40min · was 4hr · saving 83%</span><br/>
+              <span class="prompt">$</span> <span class="w">deliver --view "the one that matters"</span><span class="nu-cur"></span>
+            </div>
+          </div>
         </div>
-        <div class="r">▮ updated as work allows</div>
-      </div>
-      <div class="st-cols">
-        <a href="/workflows" class="st-col">
-          <div class="meta"><b>§01 · Workflows</b><span>4 live</span></div>
-          <h3>End-to-end <em>automations</em></h3>
-          <p>The exact pipelines I run, step by step — prompts, tools, and where I still intervene by hand.</p>
-          <div class="open"><span>Enter</span><span>→</span></div>
-        </a>
-        <a href="/tool-decisions" class="st-col">
-          <div class="meta"><b>§02 · Tool Decisions</b><span>3 live</span></div>
-          <h3>Frameworks, <em>not listicles</em></h3>
-          <p>Choosing between tools that look identical on a landing page — decided by living with them for a year.</p>
-          <div class="open"><span>Enter</span><span>→</span></div>
-        </a>
-        <a href="/systems" class="st-col">
-          <div class="meta"><b>§03 · Systems</b><span>3 live</span></div>
-          <h3>Thinking <em>with</em> the machine</h3>
-          <p>Longer essays on using AI as a thinking instrument, drawn from supply-chain systems work.</p>
-          <div class="open"><span>Enter</span><span>→</span></div>
-        </a>
-      </div>
-
-      <!-- PULL QUOTE -->
-      <div class="st-pull">
-        <blockquote>The machine is fast at <em>"here are ten things."</em> You are paid for <em>"here is the one that matters."</em></blockquote>
-        <cite>— from File No.01 · <b>"The research workflow that replaced my analyst"</b></cite>
-      </div>
+      </section>
 
       <!-- FILING LOG -->
-      <div class="st-section-head" id="archive">
-        <div>
-          <div class="e">The complete archive</div>
-          <h2>Everything <em>filed</em> so far.</h2>
+      <section class="nu-sect" style="padding-top:40px">
+        <div class="nu-sect-head">
+          <div>
+            <span class="e">▮ The archive · 7 files</span>
+            <h2>Every <em>system</em>, filed.</h2>
+          </div>
+          <div class="r">▮ 3 live · 4 queued</div>
         </div>
-        <div class="r">▮ 7 files · 3 live · 4 queued</div>
-      </div>
-      <div class="st-log">
-        <div class="st-log-head">
-          <span>№</span>
-          <span>TITLE</span>
-          <span>DEPARTMENT</span>
-          <span>EXTENT</span>
-          <span>STATUS</span>
+        <div class="nu-log">
+          <div class="nu-log-head">
+            <span class="l">▮ /diary/files — live</span>
+            <span>sorted by · latest filed</span>
+            <span>3 live · 4 queued</span>
+          </div>
+          {ARTICLES.map(a => (
+            a.status === 'live' ? (
+              <a href={`/blog/${a.slug}`} class="nu-log-row">
+                <span class="no">№ {a.no}</span>
+                <span class="tt">{a.title}</span>
+                <span class="sec">§{a.sNum} · {a.section}</span>
+                <span class="meta">{a.words.toLocaleString()} w · {a.mins}m</span>
+                <span class="stat"><span class="pill live"><span class="dot"></span>Live</span></span>
+              </a>
+            ) : (
+              <div class="nu-log-row">
+                <span class="no">№ {a.no}</span>
+                <span class="tt">{a.title}</span>
+                <span class="sec">§{a.sNum} · {a.section}</span>
+                <span class="meta">{a.words.toLocaleString()} w · {a.mins}m</span>
+                <span class="stat"><span class="pill queued"><span class="dot"></span>Queued</span></span>
+              </div>
+            )
+          ))}
         </div>
-        {ARTICLES.map(a => (
-          a.status === 'live' ? (
-            <a href={`/blog/${a.slug}`} class="st-log-row">
-              <span class="no">№ {a.no}</span>
-              <span class="tt">{a.title}</span>
-              <span class="sec">§{a.sNum} · {a.section}</span>
-              <span class="meta">{a.words.toLocaleString()} w · {a.mins} min</span>
-              <span class="stat live">Live</span>
-            </a>
-          ) : (
-            <div class="st-log-row">
-              <span class="no">№ {a.no}</span>
-              <span class="tt">{a.title}</span>
-              <span class="sec">§{a.sNum} · {a.section}</span>
-              <span class="meta">{a.words.toLocaleString()} w · {a.mins} min</span>
-              <span class="stat">Queued</span>
-            </div>
-          )
-        ))}
-      </div>
+      </section>
 
       <!-- TESTIMONIALS -->
-      <div class="st-section-head">
-        <div>
-          <div class="e">Letters · what readers say</div>
-          <h2>From the <em>inbox.</em></h2>
-        </div>
-        <div class="r">▮ unsolicited · printed with permission</div>
-      </div>
-      <div class="st-testi">
-        {TESTIMONIALS.map(t => (
-          <div class="st-testi-card">
-            <span class="mark">"</span>
-            <p>{t.q}</p>
-            <div class="att"><span><b>{t.a}</b></span><span>{t.tag}</span></div>
+      <section class="nu-sect" style="padding-top:40px">
+        <div class="nu-sect-head">
+          <div>
+            <span class="e">▮ Field reports</span>
+            <h2>What readers <em>actually say</em>.</h2>
           </div>
-        ))}
-      </div>
-
-      <!-- READ BY -->
-      <div class="st-readby">
-        <div class="lbl">▮ Read by · personnel at (self-reported on signup, firm-level only)</div>
-        <div class="firms">
-          {READBY.map(f => <span>{f}</span>)}
-          <span class="more">+ 26 other firms</span>
+          <div class="r">▮ unsolicited · printed with permission</div>
         </div>
-      </div>
+        <div class="nu-quotes">
+          {TESTIMONIALS.map(q => (
+            <div class="nu-quote">
+              <p>{q.q}</p>
+              <div class="att"><span><b>{q.a}</b></span><span>{q.tag}</span></div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <!-- TOPICS -->
-      <div class="st-section-head" id="topics">
-        <div>
-          <div class="e">Browse the archive</div>
-          <h2>By <em>topic.</em></h2>
+      <section class="nu-sect" style="padding-top:40px">
+        <div class="nu-sect-head">
+          <div>
+            <span class="e">▮ Threads · 10 active</span>
+            <h2>Browse by <em>topic</em>.</h2>
+          </div>
+          <div class="r">▮ click any chip</div>
         </div>
-        <div class="r">▮ 10 active threads</div>
-      </div>
-      <div class="st-topics-grid">
-        {TOPICS.map(t => (
-          <span class="st-topic-pill">
-            <span class="hash">#</span>{t.tag}<span class="n">{t.n}</span>
-          </span>
-        ))}
-      </div>
+        <div class="nu-topics">
+          {TOPICS.map(t => (
+            <span class="nu-chip">
+              <span class="hash">#</span>{t.tag}<span class="n">{t.n}</span>
+            </span>
+          ))}
+        </div>
+      </section>
 
       <!-- AUTHOR -->
-      <div class="st-author">
-        <div class="st-author-img">
-          <span class="lbl">FILED BY</span>
-          <div class="stub">LS</div>
+      <section class="nu-sect" style="padding-top:40px">
+        <div class="nu-sect-head">
+          <div>
+            <span class="e">▮ Operator</span>
+            <h2>I write what I <em>actually run.</em></h2>
+          </div>
+          <div class="r">▮ filed from Bengaluru<br/>▮ no ghost-writers, ever</div>
         </div>
-        <div class="st-author-body">
-          <div class="e">About the diary</div>
-          <h2>I'm <em>Lavi Sahu</em> — and this is what I actually run.</h2>
-          <p>For fourteen years I've worked in supply-chain technology consulting, currently as a Director at EY — building demand planning, inventory optimisation, and S&amp;OP systems for clients in pharma, FMCG, and energy. NITIE MBA.</p>
-          <p>My day job is literally building systems that have to survive contact with messy reality. That's why this site exists.</p>
-          <div class="creds">
-            <div class="cred"><div class="k">Current</div><div class="v">Director · EY</div></div>
-            <div class="cred"><div class="k">Tenure</div><div class="v">14 years</div></div>
-            <div class="cred"><div class="k">MBA</div><div class="v">NITIE</div></div>
-            <div class="cred"><div class="k">Sectors</div><div class="v">Pharma · FMCG · Energy</div></div>
+        <div class="nu-author">
+          <div class="nu-author-img">
+            <span class="stamp">▮ FILED BY</span>
+            <span class="glyph">LS</span>
+          </div>
+          <div class="nu-author-body">
+            <span class="e">▮ About the operator</span>
+            <h2>The site exists because my <em>day job</em> is building systems that survive contact with messy reality.</h2>
+            <p>Fourteen years in supply-chain technology consulting, currently at Director level in a Big-4 firm — building demand planning, inventory optimisation, and S&amp;OP systems for clients in pharma, FMCG, and energy. NITIE MBA.</p>
+            <p>I think about AI tools the way I think about a planning platform: not "is it impressive in a demo," but "does it still earn its place eighteen months in, when the novelty's gone."</p>
+            <div class="creds">
+              <div class="cred"><div class="k">Current</div><div class="v">Director · Big-4</div></div>
+              <div class="cred"><div class="k">Tenure</div><div class="v">14 years</div></div>
+              <div class="cred"><div class="k">MBA</div><div class="v">NITIE</div></div>
+              <div class="cred"><div class="k">Sectors</div><div class="v">Pharma · FMCG · Energy</div></div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
     </div>
   </main>
 
-  <NewsletterBand />
+  <div class="nu-wrap" style="padding-bottom:90px">
+    <NewsletterBand />
+  </div>
   <Footer slot="footer" />
 </BaseLayout>

@@ -37,6 +37,11 @@ const canonical = canonicalUrl ?? Astro.url.href;
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
+  <!-- Neural background effects -->
+  <div class="nu-grid-bg"></div>
+  <div class="nu-spotlight"></div>
+  <div class="nu-noise"></div>
+
   <div id="progress"></div>
   <slot name="header" />
   <slot />
@@ -51,16 +56,11 @@ const canonical = canonicalUrl ?? Astro.url.href;
       if (bar) bar.style.width = pct + '%';
     });
 
-    // scroll reveal
-    function initReveal() {
-      var obs = new IntersectionObserver(function(entries) {
-        entries.forEach(function(e) {
-          if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
-        });
-      }, { threshold: 0.08 });
-      document.querySelectorAll('.reveal:not(.in)').forEach(function(el) { obs.observe(el); });
-    }
-    document.addEventListener('DOMContentLoaded', initReveal);
+    // mouse spotlight + grid-bg tracking
+    document.addEventListener('mousemove', function(e) {
+      document.documentElement.style.setProperty('--mx', e.clientX + 'px');
+      document.documentElement.style.setProperty('--my', e.clientY + 'px');
+    });
   </script>
 </body>
 </html>

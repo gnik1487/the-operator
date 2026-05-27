@@ -16,20 +16,18 @@ const articles = (await getCollection('blog', e => e.data.section === 'Tool Deci
 >
   <Nav slot="header" />
 
-  <div class="wrap">
+  <div class="nu-wrap">
     <div class="section-page-header">
       <div class="crumb">§02 · Tool Decisions</div>
       <h1>Frameworks, <em>not listicles</em></h1>
       <p class="strap">Anyone can list ten tools. The hard part is choosing when they all look the same. These are the decision frameworks I'd hand my past self.</p>
     </div>
 
-    <div class="st-log">
-      <div class="st-log-head">
-        <span>№</span>
-        <span>TITLE</span>
-        <span>DEPARTMENT</span>
-        <span>EXTENT</span>
-        <span>STATUS</span>
+    <div class="nu-log">
+      <div class="nu-log-head">
+        <span class="l">▮ §02 — tool decisions</span>
+        <span>{articles.length} live</span>
+        <span style="display:none"></span>
       </div>
       {articles.map((a, i) => (
         <ArticleCard
@@ -44,6 +42,8 @@ const articles = (await getCollection('blog', e => e.data.section === 'Tool Deci
     </div>
   </div>
 
-  <NewsletterBand />
+  <div class="nu-wrap" style="padding-bottom:90px;margin-top:60px">
+    <NewsletterBand />
+  </div>
   <Footer slot="footer" />
 </BaseLayout>

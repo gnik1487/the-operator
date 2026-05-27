@@ -11,54 +11,173 @@ import '../styles/global.css';
 >
   <Nav slot="header" />
 
-  <div class="wrap">
-    <div class="about-intro">
-      <h1>Built from inside <em>actual work.</em></h1>
-      <p>Most writing about AI tools is produced by people whose job is producing writing about AI tools. This site is the opposite of that.</p>
+  <div class="nu-wrap">
+    <div class="section-page-header">
+      <div class="crumb">About · automation/diary</div>
+      <h1>Built from inside <em>real</em> work.</h1>
+      <p class="strap">Most writing about AI tools is produced by people whose job is producing writing about AI tools. This site is the opposite of that.</p>
     </div>
 
-    <div class="about-body">
-      <p>Everything here is a system I run myself, documented from inside real work — client engagements and a content business — with the failures left in.</p>
-
-      <div class="about-creds">
-        <div class="about-cred">
-          <div class="label">Current role</div>
-          <div class="value">Director, EY</div>
-          <div class="sub">Supply-chain technology consulting</div>
-        </div>
-        <div class="about-cred">
-          <div class="label">Education</div>
-          <div class="value">MBA, NITIE</div>
-          <div class="sub">Supply-chain & operations management</div>
-        </div>
-        <div class="about-cred">
-          <div class="label">Experience</div>
-          <div class="value">14 years</div>
-          <div class="sub">Pharma, FMCG, energy clients</div>
-        </div>
-        <div class="about-cred">
-          <div class="label">Focus</div>
-          <div class="value">AI automation</div>
-          <div class="sub">Consultant & solo operator niche</div>
+    <!-- WHAT THIS ARCHIVE COVERS -->
+    <section class="nu-sect" style="padding-top:0;padding-bottom:80px">
+      <div class="nu-sect-head">
+        <div>
+          <span class="e">▮ The archive</span>
+          <h2>Three sections. One standard: <em>does it survive real work?</em></h2>
         </div>
       </div>
+      <div class="nu-dept-grid">
+        <div class="nu-dept-card">
+          <div class="num">§01 · Workflows</div>
+          <h3>Tactical, step-by-step</h3>
+          <p>The exact automation that replaced a manual step — including the two steps that got thrown away before it worked. Every article shows you what broke before showing you what works.</p>
+          <a href="/workflows" class="dept-link">Browse §01 →</a>
+        </div>
+        <div class="nu-dept-card">
+          <div class="num">§02 · Tool Decisions</div>
+          <h3>Long-term assessments</h3>
+          <p>Head-to-head comparisons and multi-month assessments of AI tools in real consulting contexts. Not "is it impressive in a demo" but "is it still here eighteen months later."</p>
+          <a href="/tool-decisions" class="dept-link">Browse §02 →</a>
+        </div>
+        <div class="nu-dept-card">
+          <div class="num">§03 · Systems</div>
+          <h3>Thinking with the machine</h3>
+          <p>Longer-form essays on how to think when the machine can do the first draft. Less about tools, more about the professional judgment that tools can't replace.</p>
+          <a href="/systems" class="dept-link">Browse §03 →</a>
+        </div>
+      </div>
+    </section>
 
-      <h2>Who's writing this</h2>
-      <p>I'm Lavi Sahu. For fourteen years I've worked in supply-chain technology consulting, currently as a Director at EY, designing and implementing planning systems — demand planning, inventory optimisation, sales-and-operations planning — for clients in pharma, FMCG, and energy. I did my MBA at NITIE.</p>
-      <p>That background matters here for one specific reason: I think about AI tools the way I think about a planning platform. Not "is it impressive in a demo," but "does it still earn its place in the workflow eighteen months in, when the novelty's gone and the edge cases have shown up." That's a practitioner's question, and it's the question this whole site is built around.</p>
-      <p>I'm also not a full-time creator. I write this while holding a demanding job, which is itself part of the point — the workflows here have to work for someone with no spare hours, because I have none to spare.</p>
+    <!-- THE LIVE STACK -->
+    <section class="nu-sect" style="padding-top:0;padding-bottom:80px">
+      <div class="nu-sect-head">
+        <div>
+          <span class="e">▮ The stack</span>
+          <h2>Every tool in this archive <em>runs in production</em> right now.</h2>
+        </div>
+        <div class="r">▮ no sponsored placements<br/>▮ affiliate links disclosed every time</div>
+      </div>
+      <div class="nu-stack-grid">
+        <div class="nu-stack-tool">
+          <div class="tool-name">Claude</div>
+          <div class="tool-role">Primary reasoning engine</div>
+          <p>Drafts, critiques, and generates the contrast that makes a weak argument visible. The tool used most here — and the one written about most critically.</p>
+        </div>
+        <div class="nu-stack-tool">
+          <div class="tool-name">Obsidian</div>
+          <div class="tool-role">Knowledge base</div>
+          <p>Every client engagement note, every workflow failure, every pattern from fourteen years in supply-chain consulting. The vault that becomes this archive.</p>
+        </div>
+        <div class="nu-stack-tool">
+          <div class="tool-name">Frase</div>
+          <div class="tool-role">Content intelligence</div>
+          <p>Validates topics before committing to write them. Ensures each article addresses questions practitioners are actually asking, not just questions that seem interesting.</p>
+        </div>
+        <div class="nu-stack-tool">
+          <div class="tool-name">Beehiiv</div>
+          <div class="tool-role">Newsletter delivery</div>
+          <p>The briefings — shorter, faster, more tactical than long-form articles. Delivered directly to practitioners who don't have time to check a site every week.</p>
+        </div>
+        <div class="nu-stack-tool">
+          <div class="tool-name">Lemon Squeezy</div>
+          <div class="tool-role">Digital products</div>
+          <p>The templates and prompt chains extracted from articles. The same systems, packaged so you can drop them into your vault and run them in forty minutes.</p>
+        </div>
+      </div>
+    </section>
 
-      <h2 id="disclosure">What "shown, not sold" means</h2>
-      <p><strong>I only write about what I actually run.</strong> Not what's trending, not what an affiliate program paid the most for. If a tool isn't genuinely in my own stack, it doesn't appear. The library will grow slower because of this. That's the trade.</p>
-      <p><strong>The failures stay in.</strong> Every workflow here includes the parts that broke — the step I automated and had to delete, the clever idea that quietly made things worse. The failures are usually more useful than the successes.</p>
-      <p><strong>Every affiliate link is disclosed, every time.</strong> Some links here earn me a commission at no cost to you. I'll always tell you which, and I'll tell you when something I tried <em>didn't</em> make my cut — including things I could have earned a commission on. A recommendation you can't trust is worth less than no recommendation.</p>
+    <!-- WORKING METHODOLOGY -->
+    <section class="nu-sect" style="padding-top:0;padding-bottom:80px">
+      <div class="nu-sect-head">
+        <div>
+          <span class="e">▮ Methodology</span>
+          <h2>Every article starts from <em>real friction,</em> not a content calendar.</h2>
+        </div>
+      </div>
+      <div class="nu-pipeline">
+        <div class="nu-stage">
+          <div class="n">01</div>
+          <h4><em>Gather</em></h4>
+          <div class="stage-meta">Source: <b>real client work</b></div>
+          <p>A live engagement, a broken workflow, a tool decision made under deadline pressure. The source material has to cost something — time, frustration, or a $300 tool subscription tried for three months and then dropped.</p>
+          <div class="out"><span class="a">→ Raw field notes</span></div>
+        </div>
+        <div class="nu-stage">
+          <div class="n">02</div>
+          <h4><em>Compress</em></h4>
+          <div class="stage-meta">Test: <b>can a peer replicate in 40 min?</b></div>
+          <p>Strip the client-specific context. Extract the replicable pattern. The test: can someone with equivalent experience run this workflow themselves in forty minutes, from only this article?</p>
+          <div class="out"><span class="a">→ Draft structure</span></div>
+        </div>
+        <div class="nu-stage">
+          <div class="n">03</div>
+          <h4><em>Provoke</em></h4>
+          <div class="stage-meta">Add: <b>the failure mode</b></div>
+          <p>Where does this workflow break? What would make you delete it? The failure mode is as important as the method. An article that doesn't show how to break it hasn't told you what it actually is.</p>
+          <div class="out"><span class="a">→ Published briefing</span></div>
+        </div>
+      </div>
+    </section>
 
-      <h2>Who this is for</h2>
-      <p>Independent consultants, fractional operators, boutique-firm principals, and senior professionals running something serious on the side — people whose scarcest resource is time, not money, and who would rather understand one workflow deeply than skim ten. If you want the tool-of-the-week hype, there are a thousand sites for that. This isn't one of them.</p>
-      <p>Start with <a href="/blog/research-workflow-replaced-my-analyst">the research workflow that replaced my analyst</a> — it contains, in one concrete example, the philosophy behind everything else here.</p>
+    <!-- CREDENTIALS + BIO -->
+    <div class="nu-about-grid">
+      <div class="l">
+        <h2 class="nu-about-h1">Who <em>writes this.</em></h2>
+        <p>A senior technology consultant with fourteen years in supply-chain systems — demand planning, inventory optimisation, and S&OP implementations for clients in pharma, FMCG, and energy. Currently at Director level in a Big-4 consulting firm. MBA from NITIE.</p>
+        <p>That background shapes the standard applied here: I think about AI tools the way I think about a planning platform. Not "is it impressive in a demo," but "does it still earn its place in the workflow eighteen months in, when the novelty's gone and the edge cases have shown up."</p>
+        <p>This isn't written by a full-time creator. It's filed while holding a demanding client-facing role, which is part of the point — the workflows here have to work for someone with no spare hours, because there are none.</p>
+
+        <div style="margin-top:36px;padding-top:24px;border-top:1px solid var(--line)" id="disclosure">
+          <h3 style="font-family:var(--font-display);font-weight:300;font-style:italic;font-size:28px;margin-bottom:18px;color:var(--ink)">What "shown, not sold" means</h3>
+          <p><strong style="color:var(--ink)">Only what is actually run.</strong> Not what's trending, not what an affiliate program paid the most for.</p>
+          <p><strong style="color:var(--ink)">The failures stay in.</strong> Every workflow includes the parts that broke — the step that got automated and had to be deleted.</p>
+          <p><strong style="color:var(--ink)">Every affiliate link is disclosed, every time.</strong> You'll always be told which links earn a commission.</p>
+        </div>
+      </div>
+      <div class="r">
+        <div class="card">
+          <div class="card-row"><span class="k">Current role</span><span class="v accent">Director · Big-4 Consulting</span></div>
+          <div class="card-row"><span class="k">Domain</span><span class="v">Supply-chain technology</span></div>
+          <div class="card-row"><span class="k">Education</span><span class="v">MBA · NITIE</span></div>
+          <div class="card-row"><span class="k">Experience</span><span class="v">14 years</span></div>
+          <div class="card-row"><span class="k">Sectors</span><span class="v">Pharma · FMCG · Energy</span></div>
+          <div class="card-row"><span class="k">Focus</span><span class="v">AI automation · consulting workflows</span></div>
+          <div class="card-row"><span class="k">Location</span><span class="v">Bengaluru, India</span></div>
+        </div>
+      </div>
     </div>
+
+    <!-- WHO THIS IS FOR -->
+    <section class="nu-sect" style="padding-bottom:20px">
+      <div class="nu-sect-head">
+        <div>
+          <span class="e">▮ Audience</span>
+          <h2>Written for practitioners, <em>not observers.</em></h2>
+        </div>
+      </div>
+      <div class="nu-audience-grid">
+        <div class="nu-audience-card">
+          <div class="nu-aud-tag">Consultants</div>
+          <h3>Billing 2,000+ hours a year</h3>
+          <p>Every tool has to earn its place in a workflow with no slack. The standard here is whether something survives the Friday afternoon when you're preparing for a Monday client session.</p>
+        </div>
+        <div class="nu-audience-card">
+          <div class="nu-aud-tag">Solo operators</div>
+          <h3>Building alongside a demanding schedule</h3>
+          <p>No team. No spare hours. Every automation has to run without babysitting, or it doesn't run at all. The workflows here are built to that constraint.</p>
+        </div>
+        <div class="nu-audience-card">
+          <div class="nu-aud-tag">Knowledge workers</div>
+          <h3>Paid to think, not to type</h3>
+          <p>Managing complex information environments where the bottleneck isn't access to tools — it's knowing which tools to eliminate. These articles are written for people who make that call.</p>
+        </div>
+      </div>
+    </section>
+
   </div>
 
-  <NewsletterBand />
+  <div class="nu-wrap" style="padding-bottom:90px;margin-top:40px">
+    <NewsletterBand />
+  </div>
   <Footer slot="footer" />
 </BaseLayout>
