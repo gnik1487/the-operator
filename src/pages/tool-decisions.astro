@@ -10,27 +10,40 @@ import '../styles/global.css';
 const articles = (await getCollection('blog', e => e.data.section === 'Tool Decisions'))
   .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
 ---
-<BaseLayout title="Tool Decisions — The Operator" description="Frameworks for choosing AI tools — decided by living with them for a year, not an afternoon.">
+<BaseLayout
+  title="Tool Decisions — automation/diary"
+  description="Frameworks for choosing AI tools — decided by living with them for a year, not an afternoon."
+>
   <Nav slot="header" />
-  <div class="wrap rel">
-    <div class="section-head">
-      <div class="eyebrow">Section 02</div>
-      <h2 class="serif">Tool Decisions — <em>frameworks</em>, not roundups</h2>
-      <p>Anyone can list ten tools. The hard part is choosing when they all look the same. These are the decision frameworks I'd hand my past self.</p>
+
+  <div class="wrap">
+    <div class="section-page-header">
+      <div class="crumb">§02 · Tool Decisions</div>
+      <h1>Frameworks, <em>not listicles</em></h1>
+      <p class="strap">Anyone can list ten tools. The hard part is choosing when they all look the same. These are the decision frameworks I'd hand my past self.</p>
+    </div>
+
+    <div class="st-log">
+      <div class="st-log-head">
+        <span>№</span>
+        <span>TITLE</span>
+        <span>DEPARTMENT</span>
+        <span>EXTENT</span>
+        <span>STATUS</span>
+      </div>
+      {articles.map((a, i) => (
+        <ArticleCard
+          num={`0${i + 1}`}
+          title={a.data.title}
+          description={a.data.meta_description ?? ''}
+          section={a.data.section}
+          wordCount={a.data.word_count_target}
+          urlSlug={a.data.urlSlug}
+        />
+      ))}
     </div>
   </div>
-  <div class="cards rel">
-    {articles.map((a, i) => (
-      <ArticleCard
-        num={`No. 0${i + 2}`}
-        title={a.data.title}
-        description={a.data.meta_description ?? ''}
-        section={a.data.section}
-        wordCount={a.data.word_count_target}
-        urlSlug={a.data.urlSlug}
-      />
-    ))}
-  </div>
+
   <NewsletterBand />
   <Footer slot="footer" />
 </BaseLayout>

@@ -10,27 +10,40 @@ import '../styles/global.css';
 const articles = (await getCollection('blog', e => e.data.section === 'Workflows'))
   .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
 ---
-<BaseLayout title="Workflows — The Operator" description="End-to-end AI automations from a working consulting practice — step by step, failures included.">
+<BaseLayout
+  title="Workflows — automation/diary"
+  description="End-to-end AI automations from a working consulting practice — step by step, failures included."
+>
   <Nav slot="header" />
-  <div class="wrap rel">
-    <div class="section-head">
-      <div class="eyebrow">Section 01</div>
-      <h2 class="serif">Workflows — the systems I <em>actually run</em></h2>
-      <p>Each one is a real automation from my own practice. If a step broke, it's in here. If I still do part of it by hand, that's in here too.</p>
+
+  <div class="wrap">
+    <div class="section-page-header">
+      <div class="crumb">§01 · Workflows</div>
+      <h1>End-to-end <em>automations</em></h1>
+      <p class="strap">The exact pipelines I run, step by step — prompts, tools, and the points where I still intervene by hand. If a step broke, it's in here.</p>
+    </div>
+
+    <div class="st-log">
+      <div class="st-log-head">
+        <span>№</span>
+        <span>TITLE</span>
+        <span>DEPARTMENT</span>
+        <span>EXTENT</span>
+        <span>STATUS</span>
+      </div>
+      {articles.map((a, i) => (
+        <ArticleCard
+          num={`0${i + 1}`}
+          title={a.data.title}
+          description={a.data.meta_description ?? ''}
+          section={a.data.section}
+          wordCount={a.data.word_count_target}
+          urlSlug={a.data.urlSlug}
+        />
+      ))}
     </div>
   </div>
-  <div class="cards rel">
-    {articles.map((a, i) => (
-      <ArticleCard
-        num={`No. 0${i + 1}`}
-        title={a.data.title}
-        description={a.data.meta_description ?? ''}
-        section={a.data.section}
-        wordCount={a.data.word_count_target}
-        urlSlug={a.data.urlSlug}
-      />
-    ))}
-  </div>
+
   <NewsletterBand />
   <Footer slot="footer" />
 </BaseLayout>

@@ -16,7 +16,7 @@ const {
 const canonical = canonicalUrl ?? Astro.url.href;
 ---
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,21 +27,14 @@ const canonical = canonicalUrl ?? Astro.url.href;
   <meta property="og:description" content={description} />
   <meta property="og:type" content={ogType} />
   <meta property="og:url" content={canonical} />
-  <meta property="og:site_name" content="The Operator" />
+  <meta property="og:site_name" content="automation/diary" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={ogTitle ?? title} />
   <meta name="twitter:description" content={description} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <!-- prevent flash of wrong theme -->
-  <script is:inline>
-    (function() {
-      var t = localStorage.getItem('theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', t);
-    })();
-  </script>
 </head>
 <body>
   <div id="progress"></div>
@@ -50,26 +43,6 @@ const canonical = canonicalUrl ?? Astro.url.href;
   <slot name="footer" />
 
   <script is:inline>
-    // theme toggle
-    function toggleTheme() {
-      var root = document.documentElement;
-      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      var btn = document.getElementById('themeBtn');
-      if (btn) btn.textContent = next === 'dark' ? '◑' : '◐';
-    }
-    window.toggleTheme = toggleTheme;
-
-    // sync btn icon on load
-    (function() {
-      var btn = document.getElementById('themeBtn');
-      if (btn) {
-        var t = document.documentElement.getAttribute('data-theme');
-        btn.textContent = t === 'dark' ? '◑' : '◐';
-      }
-    })();
-
     // reading progress
     window.addEventListener('scroll', function() {
       var h = document.documentElement;
@@ -84,7 +57,7 @@ const canonical = canonicalUrl ?? Astro.url.href;
         entries.forEach(function(e) {
           if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
         });
-      }, { threshold: 0.12 });
+      }, { threshold: 0.08 });
       document.querySelectorAll('.reveal:not(.in)').forEach(function(el) { obs.observe(el); });
     }
     document.addEventListener('DOMContentLoaded', initReveal);

@@ -1,18 +1,58 @@
 ---
 import '../styles/global.css';
+export interface Props {
+  showMasthead?: boolean;
+}
+const { showMasthead = false } = Astro.props;
 const path = Astro.url.pathname;
+const today = new Date();
+const dateStr = today.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, ' · ');
 ---
-<header>
-  <nav class="nav">
-    <a href="/" class="brand">the<b>/</b>operator<span class="blink"></span></a>
-    <div class="nav-right">
-      <div class="nav-links">
-        <a href="/workflows" aria-current={path.startsWith('/workflows') ? 'page' : undefined}>Workflows</a>
-        <a href="/tool-decisions" aria-current={path.startsWith('/tool-decisions') ? 'page' : undefined}>Tool Decisions</a>
-        <a href="/systems" aria-current={path.startsWith('/systems') ? 'page' : undefined}>Systems</a>
-        <a href="/about" aria-current={path === '/about' || path === '/about/' ? 'page' : undefined}>About</a>
-      </div>
-      <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle light/dark">◑</button>
+
+<!-- Utility bar -->
+<div class="st-util">
+  <div class="l">
+    <span class="live">Issue 012 · live</span>
+    <span>automationdiary.com</span>
+  </div>
+  <div class="r">
+    <span>RSS feed</span>
+    <span>{dateStr}</span>
+  </div>
+</div>
+
+<!-- Giant masthead — home page only -->
+{showMasthead && (
+  <div class="st-mast">
+    <div class="st-mast-bar">
+      <div>Volume I · No. 012</div>
+      <div class="c">— Filed from a working practice —</div>
+      <div class="r">{dateStr}</div>
     </div>
-  </nav>
-</header>
+    <div class="st-mast-brand">automation<em>/</em>diary</div>
+    <div class="st-mast-strap">
+      <div>est. 2026 · automationdiary.com</div>
+      <div class="c">Automation, shown not sold.</div>
+      <div class="r">Founder · Editor · Sole writer</div>
+    </div>
+  </div>
+)}
+
+<!-- Secondary nav (sticky) -->
+<nav class="st-nav">
+  <div class="st-nav-inner">
+    {!showMasthead && (
+      <a href="/" class="st-nav-brand">automation<em>/</em>diary</a>
+    )}
+    <div class="st-nav-links">
+      {showMasthead && <a href="/" aria-current={path === '/' || path === '' ? 'page' : undefined}>The latest</a>}
+      <a href="/workflows" aria-current={path.startsWith('/workflows') ? 'page' : undefined}>Workflows</a>
+      <a href="/tool-decisions" aria-current={path.startsWith('/tool-decisions') ? 'page' : undefined}>Tool Decisions</a>
+      <a href="/systems" aria-current={path.startsWith('/systems') ? 'page' : undefined}>Systems</a>
+      <a href="/about" aria-current={path === '/about' || path === '/about/' ? 'page' : undefined}>About</a>
+    </div>
+    <div class="st-nav-right">
+      <button class="sub" onclick="document.getElementById('subscribe')?.scrollIntoView({behavior:'smooth'})">Subscribe →</button>
+    </div>
+  </div>
+</nav>

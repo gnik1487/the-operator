@@ -4,108 +4,263 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import NewsletterBand from '../components/NewsletterBand.astro';
 import '../styles/global.css';
+
+const ARTICLES = [
+  { no: '01', section: 'Workflows',     sNum: '01', title: 'The research workflow that replaced my analyst',           words: 1800, mins: 9,  status: 'live',   slug: 'research-workflow-replaced-my-analyst' },
+  { no: '02', section: 'Tool Decisions',sNum: '02', title: 'I tested 4 AI note systems for a year. I kept one.',      words: 2200, mins: 11, status: 'live',   slug: 'tested-4-ai-note-systems-kept-one' },
+  { no: '03', section: 'Workflows',     sNum: '01', title: 'The meeting-notes-to-deliverable pipeline',               words: 1900, mins: 9,  status: 'queued', slug: '' },
+  { no: '04', section: 'Systems',       sNum: '03', title: 'Why I stopped using AI for the part everyone uses it for', words: 1600, mins: 8,  status: 'live',   slug: 'stopped-using-ai-for-what-everyone-uses-it-for' },
+  { no: '05', section: 'Tool Decisions',sNum: '02', title: 'My entire consulting AI stack — and what each costs me',  words: 2400, mins: 12, status: 'queued', slug: '' },
+  { no: '06', section: 'Workflows',     sNum: '01', title: 'The proposal-drafting system that tripled my output',     words: 2000, mins: 10, status: 'queued', slug: '' },
+  { no: '07', section: 'Tool Decisions',sNum: '02', title: 'How to pick a tool when every review is an affiliate ad', words: 1800, mins: 9,  status: 'queued', slug: '' },
+];
+
+const TESTIMONIALS = [
+  { q: "Finally, someone writing about AI tools who has actually had to put output in front of a client. The failure annotations alone are worth the price of the template.", a: 'Director, Mid-Market Consulting Firm', tag: 'verified buyer · PIT-001' },
+  { q: "I've subscribed to a lot of AI newsletters. This is the only one I look forward to — because nothing in it has ever felt written to fill a quota.", a: 'Fractional COO', tag: 'subscriber since issue 003' },
+  { q: "The line — automate gathering, never judgement — reframed how I use Claude for client deliverables. Three months later it's still the rule I quote in my own head.", a: 'Independent strategy consultant', tag: 'reader · Singapore' },
+  { q: "Half of what gets called 'thought leadership' on LinkedIn is people summarising a free trial. This site is what the real thing looks like.", a: 'Partner, boutique systems-integration firm', tag: 'reader · London' },
+];
+
+const READBY = ['EY', 'Bain', 'McKinsey', 'BCG', 'Deloitte', 'Accenture', 'KPMG', 'PwC', 'A.T. Kearney', 'Oliver Wyman', 'L.E.K.'];
+
+const TOPICS = [
+  { tag: 'client-research', n: 4 },
+  { tag: 'note-systems',    n: 3 },
+  { tag: 'proposals',       n: 2 },
+  { tag: 'judgement',       n: 5 },
+  { tag: 'meeting-prep',    n: 3 },
+  { tag: 'tool-cost',       n: 2 },
+  { tag: 'failures',        n: 6 },
+  { tag: 'second-brain',    n: 2 },
+  { tag: 'disclosure',      n: 4 },
+  { tag: 'supply-chain',    n: 2 },
+];
 ---
-<BaseLayout title="The Operator — AI automation, shown not sold">
-  <Nav slot="header" />
+<BaseLayout title="automation/diary — AI automation, shown not sold">
+  <Nav showMasthead={true} slot="header" />
 
-  <!-- HERO -->
-  <section class="hero rel">
-    <div class="hero-inner">
-      <div class="kicker">Automation, shown not sold</div>
-      <h1 class="serif" id="heroH1"></h1>
-      <p class="lede">AI workflows documented from inside a working consulting practice and a content business — not tool reviews from someone who opened a free trial yesterday. What survives past the novelty, what I cut, and what a senior professional should actually copy.</p>
-      <div class="cta-row">
-        <a href="/blog/research-workflow-replaced-my-analyst" class="btn btn-primary">Read the latest build →</a>
-        <a href="/workflows" class="btn btn-ghost">Browse the workflows</a>
+  <main>
+    <div class="wrap">
+
+      <!-- HERO -->
+      <section class="st-hero">
+        <div class="st-hero-grid">
+          <div class="st-hero-text">
+            <div class="eyebrow">Cover story · Issue 012 · §01 Workflows</div>
+            <h1 class="st-hero-h1">The systems I <em>actually run</em> — including the parts that <em>broke.</em></h1>
+            <p class="st-hero-lede">AI workflows documented from inside a working consulting practice — not tool reviews from someone who opened a free trial yesterday. What survives past the novelty. What I cut. What a senior professional should actually copy.</p>
+            <div class="st-hero-byline">
+              <span class="av">LS</span>
+              <div class="info">By <b>Lavi Sahu</b> · Director, EY Supply-Chain Tech<br />9 min read · Updated this week</div>
+            </div>
+            <div class="st-hero-cta">
+              <a href="/blog/research-workflow-replaced-my-analyst" class="st-btn primary">Read the cover story →</a>
+              <a href="/workflows" class="st-btn ghost">Browse all workflows</a>
+            </div>
+          </div>
+
+          <div class="st-cover">
+            <div class="grid-pattern"></div>
+            <span class="stamp">ISSUE 012 · COVER</span>
+            <span class="corner">№ 01 / WORKFLOWS</span>
+            <div class="center-mark">40<em>min</em></div>
+            <div class="ascii">gather  →  compress  →  provoke
+        ↑
+   human · always</div>
+            <div class="caption">
+              <span>"Forty minutes, a real point of view at the end of it."</span>
+              <span>p.3</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- THE LATEST -->
+      <div class="st-section-head reveal">
+        <div>
+          <div class="e">Issue 012 · features</div>
+          <h2>From this <em>month's</em> filing.</h2>
+        </div>
+        <div class="r">▮ 3 features<br />▮ 1 cover · 2 inside</div>
       </div>
-      <div class="metrics reveal">
-        <div class="metric">
-          <div class="n">40<span style="font-size:20px">min</span></div>
-          <div class="l">client research,<br />down from half a day</div>
+      <div class="st-stories reveal">
+        <article class="st-story big">
+          <a href="/blog/research-workflow-replaced-my-analyst" class="story-link">
+            <div class="img">
+              <div class="img-stub"><span class="glyph">01</span></div>
+              <span class="img-cap">Cover · §01 Workflows</span>
+            </div>
+            <div class="tag">▮ Workflows · cover story</div>
+            <h3>The research workflow that <em>replaced my analyst.</em></h3>
+            <p>Half a day of client prep, cut to forty minutes — and the forty minutes are better. The exact Claude + Obsidian pipeline, including the two steps I had to throw away.</p>
+            <div class="by"><span>By <b>Lavi Sahu</b></span><span>1,800 w · 9 min</span></div>
+          </a>
+        </article>
+        <article class="st-story">
+          <a href="/blog/tested-4-ai-note-systems-kept-one" class="story-link">
+            <div class="img">
+              <div class="img-stub"><span class="glyph">02</span></div>
+              <span class="img-cap">Inside · §02 Tool Decisions</span>
+            </div>
+            <div class="tag">▮ Tool Decisions</div>
+            <h3>I tested 4 AI note systems for a year. <em>I kept one.</em></h3>
+            <p>A practitioner's teardown of AI-augmented note systems for client work — and the framework behind the verdict.</p>
+            <div class="by"><span>By <b>Lavi Sahu</b></span><span>11 min</span></div>
+          </a>
+        </article>
+        <article class="st-story">
+          <a href="/blog/stopped-using-ai-for-what-everyone-uses-it-for" class="story-link">
+            <div class="img">
+              <div class="img-stub"><span class="glyph">04</span></div>
+              <span class="img-cap">Essay · §03 Systems</span>
+            </div>
+            <div class="tag">▮ Systems essay</div>
+            <h3>Why I stopped using AI for the part <em>everyone uses it for.</em></h3>
+            <p>The one task senior professionals should never automate — and why the time savings are a trap.</p>
+            <div class="by"><span>By <b>Lavi Sahu</b></span><span>8 min</span></div>
+          </a>
+        </article>
+      </div>
+
+      <!-- DEPARTMENTS -->
+      <div class="st-section-head reveal">
+        <div>
+          <div class="e">Departments · the standing columns</div>
+          <h2>Three sections.<br /><em>One practice.</em></h2>
         </div>
-        <div class="metric">
-          <div class="n">11</div>
-          <div class="l">tools tried<br />and abandoned</div>
+        <div class="r">▮ updated as work allows</div>
+      </div>
+      <div class="st-cols">
+        <a href="/workflows" class="st-col reveal">
+          <div class="meta"><b>§01 · Workflows</b><span>4 live</span></div>
+          <h3>End-to-end <em>automations</em></h3>
+          <p>The exact pipelines I run, step by step — prompts, tools, and where I still intervene by hand.</p>
+          <div class="open"><span>Enter</span><span>→</span></div>
+        </a>
+        <a href="/tool-decisions" class="st-col reveal">
+          <div class="meta"><b>§02 · Tool Decisions</b><span>3 live</span></div>
+          <h3>Frameworks, <em>not listicles</em></h3>
+          <p>Choosing between tools that look identical on a landing page — decided by living with them for a year.</p>
+          <div class="open"><span>Enter</span><span>→</span></div>
+        </a>
+        <a href="/systems" class="st-col reveal">
+          <div class="meta"><b>§03 · Systems</b><span>3 live</span></div>
+          <h3>Thinking <em>with</em> the machine</h3>
+          <p>Longer essays on using AI as a thinking instrument, drawn from supply-chain systems work.</p>
+          <div class="open"><span>Enter</span><span>→</span></div>
+        </a>
+      </div>
+
+      <!-- PULL QUOTE -->
+      <div class="st-pull">
+        <blockquote>The machine is fast at <em>"here are ten things."</em> You are paid for <em>"here is the one that matters."</em></blockquote>
+        <cite>— from File No.01 · <b>"The research workflow that replaced my analyst"</b></cite>
+      </div>
+
+      <!-- FILING LOG -->
+      <div class="st-section-head reveal" id="archive">
+        <div>
+          <div class="e">The complete archive</div>
+          <h2>Everything <em>filed</em> so far.</h2>
         </div>
-        <div class="metric">
-          <div class="n">14<span style="font-size:20px">yr</span></div>
-          <div class="l">in supply-chain<br />systems work</div>
+        <div class="r">▮ 7 files · 3 live · 4 queued</div>
+      </div>
+      <div class="st-log">
+        <div class="st-log-head">
+          <span>№</span>
+          <span>TITLE</span>
+          <span>DEPARTMENT</span>
+          <span>EXTENT</span>
+          <span>STATUS</span>
         </div>
-        <div class="metric">
-          <div class="n">100%</div>
-          <div class="l">affiliate links<br />disclosed</div>
+        {ARTICLES.map(a => (
+          a.status === 'live' ? (
+            <a href={`/blog/${a.slug}`} class="st-log-row">
+              <span class="no">№ {a.no}</span>
+              <span class="tt">{a.title}</span>
+              <span class="sec">§{a.sNum} · {a.section}</span>
+              <span class="meta">{a.words.toLocaleString()} w · {a.mins} min</span>
+              <span class="stat live">Live</span>
+            </a>
+          ) : (
+            <div class="st-log-row">
+              <span class="no">№ {a.no}</span>
+              <span class="tt">{a.title}</span>
+              <span class="sec">§{a.sNum} · {a.section}</span>
+              <span class="meta">{a.words.toLocaleString()} w · {a.mins} min</span>
+              <span class="stat">Queued</span>
+            </div>
+          )
+        ))}
+      </div>
+
+      <!-- TESTIMONIALS -->
+      <div class="st-section-head reveal">
+        <div>
+          <div class="e">Letters · what readers say</div>
+          <h2>From the <em>inbox.</em></h2>
+        </div>
+        <div class="r">▮ unsolicited · printed with permission</div>
+      </div>
+      <div class="st-testi">
+        {TESTIMONIALS.map(t => (
+          <div class="st-testi-card reveal">
+            <span class="mark">"</span>
+            <p>{t.q}</p>
+            <div class="att"><span><b>{t.a}</b></span><span>{t.tag}</span></div>
+          </div>
+        ))}
+      </div>
+
+      <!-- READ BY -->
+      <div class="st-readby reveal">
+        <div class="lbl">▮ Read by · personnel at (self-reported on signup, firm-level only)</div>
+        <div class="firms">
+          {READBY.map(f => <span>{f}</span>)}
+          <span class="more">+ 26 other firms</span>
         </div>
       </div>
+
+      <!-- TOPICS -->
+      <div class="st-section-head reveal" id="topics">
+        <div>
+          <div class="e">Browse the archive</div>
+          <h2>By <em>topic.</em></h2>
+        </div>
+        <div class="r">▮ 10 active threads</div>
+      </div>
+      <div class="st-topics-grid reveal">
+        {TOPICS.map(t => (
+          <span class="st-topic-pill">
+            <span class="hash">#</span>{t.tag}<span class="n">{t.n}</span>
+          </span>
+        ))}
+      </div>
+
+      <!-- AUTHOR -->
+      <div class="st-author reveal">
+        <div class="st-author-img">
+          <span class="lbl">FILED BY</span>
+          <div class="stub">LS</div>
+        </div>
+        <div class="st-author-body">
+          <div class="e">About the diary</div>
+          <h2>I'm <em>Lavi Sahu</em> — and this is what I actually run.</h2>
+          <p>For fourteen years I've worked in supply-chain technology consulting, currently as a Director at EY — building demand planning, inventory optimisation, and S&amp;OP systems for clients in pharma, FMCG, and energy. NITIE MBA.</p>
+          <p>My day job is literally building systems that have to survive contact with messy reality. That's why this site exists.</p>
+          <div class="creds">
+            <div class="cred"><div class="k">Current</div><div class="v">Director · EY</div></div>
+            <div class="cred"><div class="k">Tenure</div><div class="v">14 years</div></div>
+            <div class="cred"><div class="k">MBA</div><div class="v">NITIE</div></div>
+            <div class="cred"><div class="k">Sectors</div><div class="v">Pharma · FMCG · Energy</div></div>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </section>
-
-  <!-- FEATURED -->
-  <div class="featured rel">
-    <a href="/blog/research-workflow-replaced-my-analyst" class="featured-card reveal">
-      <div class="fc-text">
-        <div class="lbl">Latest · Workflows No. 01</div>
-        <h3 class="serif">The research workflow that <em>replaced my analyst</em></h3>
-        <p>Half a day of client prep, cut to forty minutes — and the forty minutes are better. The exact Claude + Obsidian pipeline, including the two steps I had to throw away.</p>
-        <span class="read">Read the build → 9 min</span>
-      </div>
-      <div class="fc-vis">
-        <div class="term">
-          <span class="c">// gather → compress → provoke</span><br />
-          <span class="g">$</span> intake --prospect "acme-co"<br />
-          &nbsp;&nbsp;✓ material structured<br />
-          <span class="g">$</span> compress --mode <span class="a">tension</span><br />
-          &nbsp;&nbsp;✓ 3 strategic tensions found<br />
-          <span class="g">$</span> provoke <span class="c"># ← I do this part</span><br />
-          &nbsp;&nbsp;<span class="a">▮</span> forming a point of view…
-        </div>
-      </div>
-    </a>
-  </div>
-
-  <!-- THREE SECTION CARDS -->
-  <div class="wrap rel">
-    <div class="section-head reveal" style="padding-bottom:8px">
-      <div class="eyebrow">Three sections · one practice</div>
-      <h2 class="serif">Read by <em>what you need</em><br />right now.</h2>
-    </div>
-  </div>
-
-  <div class="tri rel">
-    <a href="/workflows" class="tri-card reveal">
-      <div class="ix">01 — Workflows</div>
-      <h3 class="serif">End-to-end automations</h3>
-      <p>The exact pipelines I run, step by step — prompts, tools, and the points where I still intervene by hand.</p>
-      <div class="arrow">Open section →</div>
-    </a>
-    <a href="/tool-decisions" class="tri-card reveal" style="transition-delay:0.08s">
-      <div class="ix">02 — Tool Decisions</div>
-      <h3 class="serif">Frameworks, not listicles</h3>
-      <p>How to choose between tools that look identical on a landing page — decided by living with them for a year.</p>
-      <div class="arrow">Open section →</div>
-    </a>
-    <a href="/systems" class="tri-card reveal" style="transition-delay:0.16s">
-      <div class="ix">03 — Systems</div>
-      <h3 class="serif">Thinking with the machine</h3>
-      <p>Longer essays on using AI as a thinking instrument — rigorous, practitioner-grade, drawn from systems work.</p>
-      <div class="arrow">Open section →</div>
-    </a>
-  </div>
+  </main>
 
   <NewsletterBand />
   <Footer slot="footer" />
 </BaseLayout>
-
-<script is:inline>
-  // kinetic hero headline
-  var heroWords = ["The","systems","I","actually","run","—","<em>including</em>","<em>the</em>","<em>parts</em>","<em>that</em>","<em>broke.</em>"];
-  var h1 = document.getElementById('heroH1');
-  if (h1) {
-    heroWords.forEach(function(w, i) {
-      var s = document.createElement('span');
-      s.className = 'word';
-      s.style.animationDelay = (0.15 + i * 0.07) + 's';
-      s.innerHTML = w + '&nbsp;';
-      h1.appendChild(s);
-    });
-  }
-</script>
