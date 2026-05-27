@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Background -->
+  <rect width="200" height="200" rx="44" fill="#F7F2EA"/>
+  <!-- Outer ghost ring -->
+  <circle cx="100" cy="100" r="80" stroke="#1A1612" stroke-width="1" opacity="0.1"/>
+  <!-- Primary outer ring -->
+  <circle cx="100" cy="100" r="62" stroke="#D44A1E" stroke-width="1.8" opacity="0.4"/>
+  <!-- Inner ring -->
+  <circle cx="100" cy="100" r="42" stroke="#D44A1E" stroke-width="2.5" opacity="0.85"/>
+  <!-- Center dot -->
+  <circle cx="100" cy="100" r="13" fill="#D44A1E"/>
+  <!-- Cardinal neural nodes on inner ring -->
+  <circle cx="100" cy="58" r="3.5" fill="#D44A1E" opacity="0.55"/>
+  <circle cx="142" cy="100" r="3.5" fill="#D44A1E" opacity="0.55"/>
+  <circle cx="100" cy="142" r="3.5" fill="#D44A1E" opacity="0.55"/>
+  <circle cx="58" cy="100" r="3.5" fill="#D44A1E" opacity="0.55"/>
+  <!-- Connecting spokes (faint) -->
+  <line x1="100" y1="87" x2="100" y2="62" stroke="#D44A1E" stroke-width="0.8" opacity="0.25"/>
+  <line x1="113" y1="100" x2="138" y2="100" stroke="#D44A1E" stroke-width="0.8" opacity="0.25"/>
+  <line x1="100" y1="113" x2="100" y2="138" stroke="#D44A1E" stroke-width="0.8" opacity="0.25"/>
+  <line x1="87" y1="100" x2="62" y2="100" stroke="#D44A1E" stroke-width="0.8" opacity="0.25"/>
+</svg>

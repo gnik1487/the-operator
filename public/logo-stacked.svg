@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" fill="none">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&amp;display=swap');</style>
+  </defs>
+  <!-- Background -->
+  <rect width="360" height="240" fill="#F7F2EA"/>
+  <!-- Subtle grid texture lines -->
+  <line x1="0" y1="60" x2="360" y2="60" stroke="#1A1612" stroke-width="0.4" opacity="0.07"/>
+  <line x1="0" y1="120" x2="360" y2="120" stroke="#1A1612" stroke-width="0.4" opacity="0.07"/>
+  <line x1="0" y1="180" x2="360" y2="180" stroke="#1A1612" stroke-width="0.4" opacity="0.07"/>
+  <line x1="90" y1="0" x2="90" y2="240" stroke="#1A1612" stroke-width="0.4" opacity="0.07"/>
+  <line x1="180" y1="0" x2="180" y2="240" stroke="#1A1612" stroke-width="0.4" opacity="0.07"/>
+  <line x1="270" y1="0" x2="270" y2="240" stroke="#1A1612" stroke-width="0.4" opacity="0.07"/>
+  <!-- Mark rings -->
+  <circle cx="180" cy="80" r="50" stroke="#1A1612" stroke-width="1" opacity="0.1"/>
+  <circle cx="180" cy="80" r="36" stroke="#D44A1E" stroke-width="1.5" opacity="0.45"/>
+  <circle cx="180" cy="80" r="24" stroke="#D44A1E" stroke-width="2" opacity="0.88"/>
+  <circle cx="180" cy="80" r="7.5" fill="#D44A1E"/>
+  <!-- Double rule divider -->
+  <line x1="60" y1="144" x2="300" y2="144" stroke="#1A1612" stroke-width="2" opacity="0.8"/>
+  <line x1="60" y1="148" x2="300" y2="148" stroke="#1A1612" stroke-width="0.6" opacity="0.3"/>
+  <!-- "automation" centered -->
+  <text x="180" y="176"
+    font-family="'IBM Plex Mono','Courier New',monospace"
+    font-size="22" font-weight="400"
+    fill="#1A1612" text-anchor="middle" letter-spacing="-0.3">automation</text>
+  <!-- "/diary" centered, "/" in terracotta -->
+  <text x="180" y="206"
+    font-family="'IBM Plex Mono','Courier New',monospace"
+    font-size="22" font-weight="700"
+    fill="#D44A1E" text-anchor="middle">/diary</text>
+</svg>

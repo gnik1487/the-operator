@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283 54" fill="none">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&amp;display=swap');</style>
+  </defs>
+  <!-- Neural mark (4 rings + dot) — terracotta for Studio, cyan for Neural -->
+  <circle cx="27" cy="27" r="24" stroke="#1A1612" stroke-width="0.8" opacity="0.12"/>
+  <circle cx="27" cy="27" r="19" stroke="#D44A1E" stroke-width="1.2" opacity="0.5"/>
+  <circle cx="27" cy="27" r="13" stroke="#D44A1E" stroke-width="1.6" opacity="0.9"/>
+  <circle cx="27" cy="27" r="4.5" fill="#D44A1E"/>
+  <!-- Separator rule -->
+  <line x1="57" y1="11" x2="57" y2="43" stroke="#1A1612" stroke-width="0.8" opacity="0.18"/>
+  <!-- Wordmark: automation -->
+  <text x="68" y="32"
+    font-family="'IBM Plex Mono','Courier New',monospace"
+    font-size="21" font-weight="400"
+    fill="#1A1612" letter-spacing="-0.3">automation</text>
+  <!-- Wordmark: / (accent) -->
+  <text x="196" y="32"
+    font-family="'IBM Plex Mono','Courier New',monospace"
+    font-size="21" font-weight="700"
+    fill="#D44A1E">/</text>
+  <!-- Wordmark: diary -->
+  <text x="208" y="32"
+    font-family="'IBM Plex Mono','Courier New',monospace"
+    font-size="21" font-weight="400"
+    fill="#1A1612">diary</text>
+  <!-- Thin baseline rule -->
+  <line x1="68" y1="42" x2="270" y2="42" stroke="#D44A1E" stroke-width="0.5" opacity="0.2"/>
+</svg>
